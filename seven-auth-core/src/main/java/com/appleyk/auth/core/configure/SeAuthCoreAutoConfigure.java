@@ -1,5 +1,6 @@
 package com.appleyk.auth.core.configure;
 
+import com.appleyk.auth.common.helper.SeLoggerHelper;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,4 +16,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan(basePackages ={"com.appleyk.auth.core.service"} )
 public class SeAuthCoreAutoConfigure {
+    public SeAuthCoreAutoConfigure() {
+        SeLoggerHelper.debug("============== seven-auth-core configured! ==============");
+    }
 }

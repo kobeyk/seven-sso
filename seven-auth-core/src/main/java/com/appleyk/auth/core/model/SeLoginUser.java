@@ -12,7 +12,7 @@ import lombok.Data;
  * @date created on 2022/3/18-14:04
  */
 @Data
-public class SeAuthLoginUser extends SeAuthUser{
+public class SeLoginUser extends SeAuthUser{
     /**应用标识（每一个应用系统对应一个id，一个id对应一个回调地址）*/
     private Long appId;
 }

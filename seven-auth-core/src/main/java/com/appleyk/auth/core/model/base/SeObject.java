@@ -19,4 +19,5 @@ import lombok.NoArgsConstructor;
 public class SeObject {
     private Long id;
     private String name;
+    private Integer checkStatus = SeCheckStatus.PENDING;
 }

@@ -2,6 +2,7 @@ package com.appleyk.auth.core.model;
 
 import com.appleyk.auth.core.model.base.SeObject;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,12 +21,13 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 public class SeAuthUser extends SeObject {
-    /**密码*/
-    private String password;
     /**别名*/
     private String alias;
     /**头像*/
     private String avatar;
+    @JsonIgnore
+    /**密码*/
+    private String password;
     /**用户其他信息*/
     private Map<String,Object> info;
     /**用户创建时间（注册时间）*/
