@@ -45,7 +45,7 @@
         <!--PageHelper Spring Boot Starter-->
         <pagehelper.version>1.2.10</pagehelper.version>
         <!--Mybatis 通用 Mapper Jar 集成-->
-        <tk.mybatis.version>4.1.5</tk.mybatis.version>
+        <tk.mybatis.version>2.1.5</tk.mybatis.version>
         <!--Java JDBC 4.2 (JRE 8+) driver for PostgreSQL database-->
         <postgresql.version>42.2.5</postgresql.version>
         <!--Java implementation of JSON Web Token (JWT)-->
@@ -105,6 +105,11 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pagehelper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${tk.mybatis.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * <p></p>
+ * <p>验证码类型</p>
  *
  * @author appleyk
  * @version V.0.1.1
@@ -26,7 +26,7 @@ public enum ESeCodeType {
     }
 
     @JsonCreator
-    public static ESeCodeType getEnum(int code){
+    public static ESeCodeType getType(int code){
         for(ESeCodeType type : ESeCodeType.values()){
             if(type.getCode() == code){
                 return type;

@@ -84,7 +84,7 @@ public class SeJsonUtils {
     /**
      * json字符串转Map集合
      */
-    public static Map<String, Object> parseMap(String jsonStr) throws IOException {
+    public static Map<String, Object> json2Map(String jsonStr) throws IOException {
         Map<String, Object> map = MAPPER.readValue(jsonStr, Map.class);
         return map;
     }
@@ -92,7 +92,7 @@ public class SeJsonUtils {
     /**
      * json字符串转List集合
      */
-    public static List<String> parseList(String jsonStr) throws IOException {
+    public static List<String> json2List(String jsonStr) throws IOException {
         return MAPPER.readValue(jsonStr, new TypeReference<List<String>>() {});
     }
 }

@@ -13,9 +13,9 @@ public class SeCheckStatus {
     /**待审核*/
     public static final Integer PENDING = 0;
     /**已审核*/
-    public static final Integer CHECKED = 1;
+    public static final Integer PASSED = 1;
     /**未通过*/
-    public static final Integer NO_PASS = 2;
+    public static final Integer NOPASS = 2;
     /**已废除*/
     public static final Integer ABOLISHED  = 3;
 }

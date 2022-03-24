@@ -7,7 +7,7 @@ import com.appleyk.auth.core.service.ISeAuthManager;
 import java.util.Map;
 
 /**
- * <p></p>
+ * <p>认证管理默认实现</p>
  *
  * @author appleyk
  * @version V.0.1.1
