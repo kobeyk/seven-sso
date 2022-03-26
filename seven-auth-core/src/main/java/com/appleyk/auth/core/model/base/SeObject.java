@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class SeObject {
     private Long id;
     private String name;

@@ -1,8 +1,10 @@
 package com.appleyk.auth.core.dao.entity;
 
+import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.common.util.SeGeneralUtils;
 import com.appleyk.auth.common.util.SeJsonUtils;
 import com.appleyk.auth.common.util.SeMD5Encrypt;
+import com.appleyk.auth.core.config.SeDynamicTableConfig;
 import com.appleyk.auth.core.model.SeAuthUser;
 import com.appleyk.auth.core.model.base.SeCheckStatus;
 import lombok.Data;
@@ -38,37 +40,51 @@ public class SeUserEntity implements IDynamicTableName {
     private int status = SeCheckStatus.PASSED;
     private String info;
 
-    private SeUserEntity(SeAuthUser authUser) throws Exception{
+    public SeUserEntity() {
+
+    }
+
+    private SeUserEntity(SeAuthUser authUser) throws Exception {
         this.uid = authUser.getId();
         this.name = authUser.getName();
         this.password = SeMD5Encrypt.encrypt(authUser.getPassword());
-        this.alias = SeGeneralUtils.isEmpty(authUser.getAlias())?this.name:authUser.getAlias();
+        this.alias = SeGeneralUtils.isEmpty(authUser.getAlias()) ? this.name : authUser.getAlias();
         this.avatar = authUser.getAvatar();
         this.info = authUser.getInfo() == null ? "{}" : SeJsonUtils.object2Json(authUser.getInfo());
-        this.cTime = authUser.getCTime() == null ? new Timestamp(System.currentTimeMillis()):new Timestamp(authUser.getCTime().getTime());
-        this.uTime = authUser.getUTime() == null ? this.cTime:new Timestamp(authUser.getUTime().getTime());
+        this.cTime = authUser.getCTime() == null ? new Timestamp(System.currentTimeMillis()) : new Timestamp(authUser.getCTime().getTime());
+        this.uTime = authUser.getUTime() == null ? this.cTime : new Timestamp(authUser.getUTime().getTime());
     }
 
-    public static SeUserEntity createEntity(SeAuthUser authUser) throws Exception{
-        return new SeUserEntity(authUser);
-    }
-
-    public static SeAuthUser createModel(SeUserEntity entity) throws Exception{
-        if (entity == null){
+    public static SeUserEntity createEntity(SeAuthUser authUser) {
+        try {
+            return new SeUserEntity(authUser);
+        } catch (Exception e) {
+            SeLoggerHelper.error(e.getMessage());
             return null;
         }
-        SeAuthUser authUser = SeAuthUser.builder().alias(entity.alias)
-                .info(SeGeneralUtils.isEmpty(entity.getInfo()) ? null : SeJsonUtils.json2Map(entity.getInfo()))
-                .avatar(entity.getAvatar())
-                .cTime(new Date(entity.getCTime().getTime())).build();
-        authUser.setId(entity.getUid());
-        authUser.setName(entity.getName());
-        return authUser;
     }
 
-    /**实现动态表名*/
+    public static SeAuthUser createModel(SeUserEntity entity) {
+        if (entity == null) {
+            return null;
+        }
+        try{
+            SeAuthUser authUser = SeAuthUser.builder().alias(entity.alias)
+                    .info(SeGeneralUtils.isEmpty(entity.getInfo()) ? null : SeJsonUtils.json2Map(entity.getInfo()))
+                    .avatar(entity.getAvatar())
+                    .cTime(new Date(entity.getCTime().getTime())).build();
+            authUser.setId(entity.getUid());
+            authUser.setName(entity.getName());
+            return authUser;
+        }catch (Exception e){
+            SeLoggerHelper.error(e.getMessage());
+            return null;
+        }
+    }
+
+    /** 实现动态表名 */
     @Override
     public String getDynamicTableName() {
-        return null;
+        return SeDynamicTableConfig.tableName;
     }
 }

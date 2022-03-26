@@ -31,12 +31,20 @@ public interface SeUserMapper extends Mapper<SeUserEntity> {
     /**
      * 更新用户信息
      */
-    int updateUserByUserName(@Param("userEntity") SeUserEntity userEntity, @Param("tableName") String tableName);
+    Integer updateUserByUserName(@Param("userEntity") SeUserEntity userEntity, @Param("tableName") String tableName);
 
     /**
      * 通过id查找用户
      */
     SeUserEntity findUserByUid(@Param("id") Long uId, @Param("tableName") String tableName);
+
+    /**
+     * 更新用户名（一般系统更改用户名是有限制次数的，比如一个月只能改一次）
+     * @param oldName 旧用户名
+     * @param newName 新用户名
+     * @param tableName 表名
+     */
+    Integer updateUserName(@Param("oldName") String oldName,@Param("newName") String newName,@Param("tableName") String tableName);
 
     /**
      * 统计注册用户数量

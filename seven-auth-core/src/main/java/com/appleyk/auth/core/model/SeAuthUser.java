@@ -1,5 +1,6 @@
 package com.appleyk.auth.core.model;
 
+import com.appleyk.auth.core.model.base.SeCheckStatus;
 import com.appleyk.auth.core.model.base.SeObject;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -8,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.SequenceInputStream;
 import java.util.Date;
 import java.util.Map;
 
@@ -40,4 +42,13 @@ public class SeAuthUser extends SeObject {
     /**用户信息修改时间（如改密、改昵称、改头像...etc）*/
     @JsonFormat(pattern ="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8" )
     private Date uTime;
+    public SeAuthUser(Long id,String name,String password){
+        super(id,name, SeCheckStatus.PASSED);
+        this.password = password;
+    }
+    public SeAuthUser(Long id,String name,String password,Map<String,Object> info){
+        super(id,name, SeCheckStatus.PASSED);
+        this.password = password;
+        this.info = info;
+    }
 }

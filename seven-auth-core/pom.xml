@@ -22,6 +22,18 @@
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
         </dependency>
+        <!-- 配置属性（元数据）提示器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <!-- 依赖不传递，仅仅在auth-core模块生效-->
+            <optional>true</optional>
+        </dependency>
+        <!-- redis连接客户端工具,版本不用写，默认使用springboot pom中已经定义的版本-->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

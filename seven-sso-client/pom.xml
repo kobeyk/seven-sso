@@ -7,11 +7,19 @@
         <groupId>com.appleyk</groupId>
         <version>0.1.1-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
     <artifactId>seven-sso-client</artifactId>
+    <version>${project.version}</version>
     <packaging>jar</packaging>
     <description>单点登录应用App引入的客户端模块，负责和单点认证中心服务进行接口通信</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.appleyk</groupId>
+            <artifactId>seven-auth-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>${project.name}</finalName>

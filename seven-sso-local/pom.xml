@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>seven-sso-local</artifactId>
+    <version>${project.version}</version>
     <packaging>jar</packaging>
     <description>单点登录本地版（即模块一经引用即可独立为用户认证中心，为单一应用系统服务）-</description>
 

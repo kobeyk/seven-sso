@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class SeAuthListenerBeanContainer {
     private static List<ASeAuthListener> listeners = new LinkedList<>();
+    private SeAuthListenerBeanContainer(){}
     public static void addListener(int order,ASeAuthListener authListener) {
         if (authListener == null){
             throw new RuntimeException("authListener is null !");
@@ -37,5 +38,8 @@ public class SeAuthListenerBeanContainer {
             }
             listeners.add(index,authListener);
         }
+    }
+    public static List<ASeAuthListener> getListeners(){
+        return listeners;
     }
 }

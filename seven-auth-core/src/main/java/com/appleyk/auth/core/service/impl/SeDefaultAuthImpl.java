@@ -1,12 +1,12 @@
 package com.appleyk.auth.core.service.impl;
 
 import com.appleyk.auth.common.excep.SeException;
-import com.appleyk.auth.core.dao.mapper.SeUserMapper;
+import com.appleyk.auth.common.ids.SeIdProducer;
 import com.appleyk.auth.core.model.SeAuthUser;
+import com.appleyk.auth.core.model.session.SeSsoInfo;
 import com.appleyk.auth.core.service.ISeAuthManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
@@ -20,20 +20,28 @@ import java.util.Map;
  * @date created on 2022/3/23-16:47
  */
 @Service
-public abstract class SeDefaultAuthService implements ISeAuthManager {
+public abstract class SeDefaultAuthImpl implements ISeAuthManager {
 
     @Autowired
-    private SeUserMapper userMapper;
+    private SeAuthUserImpl userService;
 
     @Override
-    @Transactional(rollbackFor = {Exception.class})
     public SeAuthUser register(String userName, String password) throws SeException {
-        /**保证用户名全局唯一，先查*/
-        return null;
+        SeAuthUser authUser = new SeAuthUser(SeIdProducer.getID(),userName,password);
+        userService.insert(authUser);
+        return authUser;
     }
 
     @Override
     public SeAuthUser register(String userName, String password, Map<String, Object> info) throws SeException {
+        SeAuthUser authUser = new SeAuthUser(SeIdProducer.getID(),userName,password,info);
+        userService.insert(authUser);
+        return authUser;
+    }
+
+    @Override
+    public SeSsoInfo login(String userName, String password, Long appId) {
+
         return null;
     }
 
@@ -42,7 +50,4 @@ public abstract class SeDefaultAuthService implements ISeAuthManager {
 
     }
 
-    public void doAfterLogin(){
-
-    }
 }

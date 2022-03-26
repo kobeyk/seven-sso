@@ -1,6 +1,8 @@
 package com.appleyk.auth.core.configure;
 
 import com.appleyk.auth.common.helper.SeLoggerHelper;
+import com.appleyk.auth.core.config.SeSsoProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import tk.mybatis.spring.annotation.MapperScan;
@@ -15,6 +17,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @date created on 2022/3/18-13:42
  */
 @Configuration
+@EnableConfigurationProperties(SeSsoProperties.class)
 @ComponentScan(basePackages ={"com.appleyk.auth.core.service"})
 @MapperScan(basePackages = {"com.appleyk.auth.core.dao.mapepr"})
 public class SeAuthCoreAutoConfigure {

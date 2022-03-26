@@ -1,6 +1,8 @@
 package com.appleyk.auth.core.model;
 
 import com.appleyk.auth.core.dict.ESeCodeType;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * <p>注册用户</p>
@@ -11,6 +13,7 @@ import com.appleyk.auth.core.dict.ESeCodeType;
  * @github https://github.com/kobeyk
  * @date created on 2022/3/18-14:13
  */
+@Data
 public class SeRegister extends SeAuthUser{
     /**确认密码*/
     private String rePassword;

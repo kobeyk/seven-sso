@@ -1,4 +1,4 @@
-package com.appleyk.auth.core.configure;
+package com.appleyk.auth.core.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ public class SeDynamicTableConfig {
         return tableName;
     }
 
-    @Value("sso.user.dynamic.tableName:t_sso_user")
+    @Value("sse.sso.user.tableName:t_sso_user")
     public static void setTableName(String tableName) {
         SeDynamicTableConfig.tableName = tableName;
     }

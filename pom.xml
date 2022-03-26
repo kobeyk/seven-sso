@@ -6,10 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.appleyk</groupId>
     <artifactId>seven-sso</artifactId>
-    <version>${project.version}</version>
+    <version>0.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
+        <!-- 通用模块,如果异常定义、响应结果封装、id生成器等-->
+        <module>seven-auth-common</module>
         <!--核心模块-->
         <module>seven-auth-core</module>
         <!--单机版模块（全套）-->
@@ -20,7 +22,6 @@
         <module>seven-sso-server</module>
         <!--测试模块（分为local版和client版）-->
         <module>seven-app-test</module>
-        <module>seven-auth-common</module>
     </modules>
 
     <parent>
@@ -94,11 +95,6 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>${jedis.version}</version>
             </dependency>
             <!-- pageHelper -->
             <dependency>

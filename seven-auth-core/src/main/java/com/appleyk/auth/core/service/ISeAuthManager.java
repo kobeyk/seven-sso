@@ -46,6 +46,12 @@ public interface ISeAuthManager {
     SeSsoInfo login(String userName,String password,Long appId);
 
     /**
+     * 退出登录
+     * @param token 用户令牌
+     */
+    void logout(String token);
+
+    /**
      * 按用户令牌进行登录
      * @param token 用户令牌
      * @param appId 应用系统ID
@@ -59,12 +65,6 @@ public interface ISeAuthManager {
      * @return 服务端用户认证缓存信息
      */
     SeSsoInfo checkToken(String token);
-
-    /**
-     * 退出登录
-     * @param token 用户令牌
-     */
-    void logout(String token);
 
     /***
      * 第三方登录实现，1.0版本暂不支持
