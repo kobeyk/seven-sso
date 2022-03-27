@@ -1,7 +1,13 @@
 package com.appleyk.sso.server;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
+
 /**
- * <p></p>
+ * <p>单点登录服务端启动类</p>
  *
  * @author appleyk
  * @version V.0.1.1
@@ -9,5 +15,16 @@ package com.appleyk.sso.server;
  * @github https://github.com/kobeyk
  * @date created on 2022/3/26-16:16
  */
-public class SsoApplication {
+@SpringBootApplication
+@ComponentScan(basePackages = "com.appleyk")
+public class SsoApplication extends SpringBootServletInitializer {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SsoApplication.class, args);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(SsoApplication.class);
+    }
 }

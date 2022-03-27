@@ -4,7 +4,7 @@ import com.appleyk.auth.core.container.SeSessionCacheBeanContainer;
 import com.appleyk.auth.core.model.session.SeSsoInfo;
 
 /**
- * <p>越努力，越幸运</p>
+ * <p>抽象会话缓存类，实现默认的checkToken，剩下的交给子类去实现</p>
  *
  * @author appleyk
  * @version V.0.1.1
