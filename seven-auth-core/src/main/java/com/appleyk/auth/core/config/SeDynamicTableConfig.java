@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
  * @github https://github.com/kobeyk
  * @date created on 2022/3/25-15:44
  */
-@Configuration
 public class SeDynamicTableConfig {
 
     public static String tableName;

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @date created on  下午11:24 2022/3/26
  */
 @Service
-@ConditionalOnProperty(prefix = "")
+@ConditionalOnProperty(prefix = "se.sso.cache",name = "beanName",havingValue = "redis")
 public class SeRedisCacheImpl extends ASeSessionCache {
 
     @Override

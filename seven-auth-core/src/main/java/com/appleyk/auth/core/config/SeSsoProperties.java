@@ -45,11 +45,11 @@ class Redis{
     /** redis地址，如：redis://10.16.xx.xx:6379/2},6379端口号，2是redis数据库的索引*/
     String address = "redis://localhost:6379/2";
     /**
-     *  redis模式，共四种（哨兵属于特殊模式）：
-     *  单机（jedis）
-     *  分片（shard）
-     *  哨兵（sentinel）
-     *  集群（cluster）
+     *  redis模式，共四种（哨兵属于特殊的jedis，单机其实也可以称作'副本'，只不过只有一个master而已）：
+     *  单机（jedis）{@link redis.clients.jedis.Jedis} - {@link redis.clients.jedis.JedisPool}.getResource()
+     *  分片（shard）{@link redis.clients.jedis.ShardedJedis} - {@link redis.clients.jedis.ShardedJedisPool}.getResource()
+     *  哨兵（sentinel）{@link redis.clients.jedis.Jedis} -- {@link redis.clients.jedis.JedisSentinelPool}.getResource()
+     *  集群（cluster）{@link redis.clients.jedis.JedisCluster}
      */
     String mode = "jedis";
     /**密码,一般用不到*/
