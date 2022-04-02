@@ -1,12 +1,8 @@
 package com.appleyk.auth.core.config;
-import lombok.Cleanup;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.mail.MailProperties;
-import org.springframework.boot.autoconfigure.session.SessionProperties;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -46,10 +42,13 @@ public class SeRedisPoolConfig {
         return config;
     }
 
+    @Autowired
+    private SeSsoProperties properties;
+
     @Bean
-    public JedisPool jedis(@Qualifier("jedisPoolConfig") JedisPoolConfig poolConfig,
-                           @Qualifier("seSsoProperties") SeSsoProperties properties){
-        JedisPool jedisPool = new JedisPool(poolConfig, properties.getRedis().address);
+    public JedisPool jedis(@Qualifier("jedisPoolConfig") JedisPoolConfig poolConfig                ){
+        JedisPool jedisPool = new JedisPool(poolConfig, properties.getRedis().address,
+                6379,30000,null,2);
         return jedisPool;
     }
 }

@@ -14,36 +14,36 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
  * @date created on  下午11:41 2022/3/26
  */
 @Data
-@ConfigurationProperties(prefix = "se.sso")
+@ConfigurationProperties(prefix = "se.sso", ignoreUnknownFields = true)
 public class SeSsoProperties {
     @NestedConfigurationProperty
-    User user;
+    private User user = new User();
     @NestedConfigurationProperty
-    Cache cache;
+    private Cache cache = new Cache();
     @NestedConfigurationProperty
-    Redis redis;
+    private Redis redis = new Redis();
 }
 
 @Data
 class User{
-    String tableName;
+    private String tableName = "t_sso_user";
 }
 
 @Data
 class Cache{
     /**缓存名称*/
-    String beanName="local";
+    private String beanName="local";
     /**缓存key大小,默认缓存1w个，超过1w个，会采用缓存淘汰策略处理新的key*/
-    int size = 10000;
+    private int size = 10000;
     /**缓存key存活时间，默认1小时,单位毫秒*/
-    long ttl = 3600000;
-    Redis redis;
+    private long ttl = 3600000;
+
 }
 
 @Data
 class Redis{
-    /** redis地址，如：redis://10.16.xx.xx:6379/2},6379端口号，2是redis数据库的索引*/
-    String address = "redis://localhost:6379/2";
+    /** redis地址，如：10.16.xx.xx:6379/2,6379端口号，2是redis数据库的索引*/
+    String address = "127.0.0.1:6379/2";
     /**
      *  redis模式，共四种（哨兵属于特殊的jedis，单机其实也可以称作'副本'，只不过只有一个master而已）：
      *  单机（jedis）{@link redis.clients.jedis.Jedis} - {@link redis.clients.jedis.JedisPool}.getResource()

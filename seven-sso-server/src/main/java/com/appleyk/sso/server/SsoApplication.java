@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  * <p>单点登录服务端启动类</p>
@@ -16,7 +15,6 @@ import org.springframework.context.annotation.ComponentScan;
  * @date created on 2022/3/26-16:16
  */
 @SpringBootApplication
-@ComponentScan(basePackages = "com.appleyk")
 public class SsoApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
