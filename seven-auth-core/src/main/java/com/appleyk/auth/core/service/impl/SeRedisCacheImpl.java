@@ -1,5 +1,6 @@
 package com.appleyk.auth.core.service.impl;
 
+import com.appleyk.auth.common.excep.SeException;
 import com.appleyk.auth.core.dict.SeCacheBeanNameConsts;
 import com.appleyk.auth.core.model.session.SeSsoInfo;
 import com.appleyk.auth.core.service.ASeSessionCache;
@@ -25,12 +26,12 @@ public class SeRedisCacheImpl extends ASeSessionCache {
     }
 
     @Override
-    public void put(Long userId, SeSsoInfo ssoInfo) {
+    public void put(Long userId, SeSsoInfo ssoInfo) throws SeException {
 
     }
 
     @Override
-    public void remove(Long userId) {
+    public void remove(Long userId) throws SeException {
 
     }
 
@@ -40,12 +41,12 @@ public class SeRedisCacheImpl extends ASeSessionCache {
     }
 
     @Override
-    public void put(String key, String code) {
+    public void put(String key, String code) throws SeException {
 
     }
 
     @Override
-    public void remove(String key) {
+    public void remove(String key) throws SeException {
 
     }
 

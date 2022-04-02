@@ -4,10 +4,9 @@ import com.appleyk.auth.common.excep.SeCommonException;
 import com.appleyk.auth.common.excep.SeException;
 import com.appleyk.auth.core.service.ASeSessionCache;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-import java.nio.channels.SeekableByteChannel;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,6 +18,7 @@ import java.util.Map;
  * @github https://github.com/kobeyk
  * @date created on  下午10:55 2022/3/26
  */
+@Component
 public class SeSessionCacheBeanContainer {
     /**缓存模式（默认：local）*/
     private static String CACHE_BEAN_NAME;
@@ -36,14 +36,14 @@ public class SeSessionCacheBeanContainer {
         }
     }
     /**这里采用动态注入的方式来取出对应的cache实例*/
-    public static ASeSessionCache getSessionCache() throws SeException {
+    public ASeSessionCache getSessionCache() throws SeException {
         if (caches.size() <= 0){
             throw new SeCommonException("There are no cache beans for user session！");
         }
         return caches.get(CACHE_BEAN_NAME);
     }
 
-    @Value("${se.sso.cache.beanName}:local")
+    @Value("${se.sso.cache.beanName:local}")
     public void setCacheBeanName(String cacheBeanName){
         CACHE_BEAN_NAME = cacheBeanName;
     }

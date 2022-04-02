@@ -19,7 +19,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @Configuration
 @EnableConfigurationProperties(SeSsoProperties.class)
-@ComponentScan(basePackages ={"com.appleyk.auth.core.service"})
+@ComponentScan(basePackages ={"com.appleyk.auth.core"})
 @Import(ConfigSelector.class)
 @MapperScan(basePackages = {"com.appleyk.auth.core.dao.mapepr"})
 public class SeAuthCoreAutoConfigure {

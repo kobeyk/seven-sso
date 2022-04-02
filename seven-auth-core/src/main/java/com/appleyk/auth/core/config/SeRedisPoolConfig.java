@@ -1,9 +1,6 @@
 package com.appleyk.auth.core.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
@@ -18,7 +15,7 @@ import redis.clients.jedis.JedisPoolConfig;
 public class SeRedisPoolConfig {
 
     @Bean
-    public JedisPoolConfig jedisPoolConfig(){
+    public JedisPoolConfig jedisPoolConfig() {
         JedisPoolConfig config = new JedisPoolConfig();
         /**允许最大的连接*/
         config.setMaxTotal(200);
@@ -42,13 +39,4 @@ public class SeRedisPoolConfig {
         return config;
     }
 
-    @Autowired
-    private SeSsoProperties properties;
-
-    @Bean
-    public JedisPool jedis(@Qualifier("jedisPoolConfig") JedisPoolConfig poolConfig                ){
-        JedisPool jedisPool = new JedisPool(poolConfig, properties.getRedis().address,
-                6379,30000,null,2);
-        return jedisPool;
-    }
 }

@@ -1,12 +1,11 @@
 package com.appleyk.auth.core.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>
- *     认证用户表名动态注入（单点服务端可能叫t_sso_user,
- *     但是业务系统引用local模块，可能任意起名，所以这里不要限制死）
+ *    认证用户表名动态注入（单点服务端可能叫t_sso_user,
+ *    但是业务系统引用local模块，可能任意起名，所以这里不要限制死）
  * </p>
  *
  * @author appleyk
@@ -23,7 +22,7 @@ public class SeDynamicTableConfig {
         return tableName;
     }
 
-    @Value("sse.sso.user.tableName:t_sso_user")
+    @Value("${sse.sso.user.tableName:t_sso_use}r")
     public static void setTableName(String tableName) {
         SeDynamicTableConfig.tableName = tableName;
     }
