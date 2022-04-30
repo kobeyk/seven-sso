@@ -56,6 +56,7 @@
         <commons.lang3.version>3.8.1</commons.lang3.version>
         <!-- redis 客户端连接工具-->
         <redis.client.version>4.1.0</redis.client.version>
+        <expiringmap.version>0.5.8</expiringmap.version>
     </properties>
 
     <!--统一POM依赖管理-->
@@ -106,6 +107,12 @@
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
                 <version>${tk.mybatis.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/net.jodah/expiringmap -->
+            <dependency>
+                <groupId>net.jodah</groupId>
+                <artifactId>expiringmap</artifactId>
+                <version>${expiringmap.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

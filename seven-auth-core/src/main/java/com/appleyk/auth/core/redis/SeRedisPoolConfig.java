@@ -1,4 +1,4 @@
-package com.appleyk.auth.core.config;
+package com.appleyk.auth.core.redis;
 
 import org.springframework.context.annotation.Bean;
 import redis.clients.jedis.JedisPoolConfig;

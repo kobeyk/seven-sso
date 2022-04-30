@@ -1,6 +1,7 @@
-package com.appleyk.auth.core.config;
+package com.appleyk.auth.core.redis;
 
 import com.appleyk.auth.common.helper.SeLoggerHelper;
+import com.appleyk.auth.core.config.SeSsoProperties;
 import com.appleyk.auth.core.service.ASeJedisPool;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -44,7 +45,7 @@ public class SeJedisCluster extends ASeJedisPool implements InitializingBean, Di
             HostAndPort hostAndPort = new HostAndPort(configs[0], Integer.valueOf(configs[1]));
             nodes.add(hostAndPort);
         }
-        jedisCluster = new JedisCluster(nodes, poolConfig);
+        this.jedisCluster = new JedisCluster(nodes, poolConfig);
         SeLoggerHelper.debug("========= Redis 集群版完成实例化!");
     }
 
@@ -61,6 +62,26 @@ public class SeJedisCluster extends ASeJedisPool implements InitializingBean, Di
     @Override
     public String get(String key) {
         return jedisCluster.get(key);
+    }
+
+    @Override
+    public boolean exists(String key) {
+        return jedisCluster.exists(key);
+    }
+
+    @Override
+    public String setObject(String key, int seconds, Object value) {
+        return jedisCluster.setex(key.getBytes(),seconds,serialize(value));
+    }
+
+    @Override
+    public Object getObject(String key) {
+        return unSerialize(jedisCluster.get(key.getBytes()));
+    }
+
+    @Override
+    public long remove(String key) {
+        return jedisCluster.del(key);
     }
 
     @Override

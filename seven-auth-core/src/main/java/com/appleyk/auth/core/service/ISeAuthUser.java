@@ -3,7 +3,6 @@ package com.appleyk.auth.core.service;
 import com.appleyk.auth.common.core.SePage;
 import com.appleyk.auth.common.core.filter.SeFilter;
 import com.appleyk.auth.common.excep.SeException;
-import com.appleyk.auth.core.dao.entity.SeUserEntity;
 import com.appleyk.auth.core.model.SeAuthUser;
 
 /**
@@ -23,7 +22,7 @@ public interface ISeAuthUser {
      * @return  保存后的业务对象
      * @exception SeException 保存失败，可能用户名已存在！
      */
-    SeAuthUser insert(SeAuthUser authUser) throws SeException;
+    SeAuthUser save(SeAuthUser authUser) throws SeException;
 
     /**
      * 更新用户信息，如更新昵称、头像、info信息等...

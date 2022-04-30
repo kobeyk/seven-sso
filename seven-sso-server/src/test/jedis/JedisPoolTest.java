@@ -2,6 +2,7 @@ package jedis;
 
 import com.appleyk.auth.common.excep.SeException;
 import com.appleyk.auth.core.container.SeRedisInstanceContainer;
+import com.appleyk.auth.core.model.SeAuthUser;
 import com.appleyk.sso.server.SsoApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,5 +41,23 @@ public class JedisPoolTest {
         String result = container.jedisPool().get(key);
         System.out.println(result);
     }
+
+    @Test
+    public void setObject() throws SeException{
+        /**一定要保证SeAuthUser类实现了Serializable接口*/
+        SeAuthUser authUser = new SeAuthUser();
+        authUser.setId(1001L);
+        authUser.setName("appleyk");
+        authUser.setPassword("11dsada1wdsada");
+        String user = container.jedisPool().setObject("user", 60, authUser);
+        System.out.println(user);
+    }
+    @Test
+    public void getObject() throws SeException{
+        Object object = container.jedisPool().getObject("user");
+        SeAuthUser authUser = (SeAuthUser)object;
+        System.out.println(authUser.getPassword());
+    }
+
 
 }

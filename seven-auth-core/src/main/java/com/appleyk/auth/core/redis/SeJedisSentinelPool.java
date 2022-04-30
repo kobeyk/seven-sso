@@ -1,6 +1,7 @@
-package com.appleyk.auth.core.config;
+package com.appleyk.auth.core.redis;
 
 import com.appleyk.auth.common.helper.SeLoggerHelper;
+import com.appleyk.auth.core.config.SeSsoProperties;
 import com.appleyk.auth.core.service.ASeJedisPool;
 import lombok.Cleanup;
 import org.springframework.beans.factory.DisposableBean;
@@ -65,6 +66,30 @@ public class SeJedisSentinelPool extends ASeJedisPool implements InitializingBea
     public String get(String key) {
         @Cleanup Jedis jedis = jedisSentinelPool.getResource();
         return jedis.get(key);
+    }
+
+    @Override
+    public boolean exists(String key) {
+        @Cleanup Jedis jedis = jedisSentinelPool.getResource();
+        return jedis.exists(key);
+    }
+
+    @Override
+    public String setObject(String key, int seconds, Object value) {
+        @Cleanup Jedis jedis = jedisSentinelPool.getResource();
+        return jedis.setex(key.getBytes(),seconds,serialize(value));
+    }
+
+    @Override
+    public Object getObject(String key) {
+        @Cleanup Jedis jedis = jedisSentinelPool.getResource();
+        return unSerialize(jedis.get(key.getBytes()));
+    }
+
+    @Override
+    public long remove(String key) {
+        @Cleanup Jedis jedis = jedisSentinelPool.getResource();
+        return jedis.del(key);
     }
 
     @Override

@@ -44,7 +44,7 @@ public class SeAuthUserImpl implements ISeAuthUser {
 
     @Override
     @Transactional(rollbackFor = {Exception.class})
-    public SeAuthUser insert(SeAuthUser authUser) throws SeException {
+    public SeAuthUser save(SeAuthUser authUser) throws SeException {
         if (SeGeneralUtils.isEmpty(authUser.getId())) {
             throw new SeCommonException(ESeResponseCode.OBJECT_ID_NOT_EXIST, "用户ID不允许空！");
         }

@@ -31,6 +31,11 @@ public interface ISeSessionCache {
     SeSsoInfo get(Long userId);
 
     /**
+     * 获取指定key的缓存数据
+     */
+    String get(String key);
+
+    /**
      * 检查用户令牌是否有效
      * @param token 用户令牌
      * @return 用户信息
@@ -47,10 +52,5 @@ public interface ISeSessionCache {
 
     /** 清除指定key的缓存数据，如清除手机号或用户名对应的code值*/
     void remove(String key) throws SeException;
-
-    /**
-     * 获取指定key的缓存数据
-     */
-    String get(String key);
 
 }

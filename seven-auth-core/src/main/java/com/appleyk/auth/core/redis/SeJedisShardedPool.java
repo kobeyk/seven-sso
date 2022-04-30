@@ -1,7 +1,8 @@
-package com.appleyk.auth.core.config;
+package com.appleyk.auth.core.redis;
 
 import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.common.util.SeGeneralUtils;
+import com.appleyk.auth.core.config.SeSsoProperties;
 import com.appleyk.auth.core.service.ASeJedisPool;
 import lombok.Cleanup;
 import org.springframework.beans.factory.DisposableBean;
@@ -77,6 +78,30 @@ public class SeJedisShardedPool extends ASeJedisPool implements InitializingBean
     public String get(String key) {
         @Cleanup ShardedJedis jedis = shardedJedisPool.getResource();
         return jedis.get(key);
+    }
+
+    @Override
+    public boolean exists(String key) {
+        @Cleanup ShardedJedis jedis = shardedJedisPool.getResource();
+        return jedis.exists(key);
+    }
+
+    @Override
+    public String setObject(String key, int seconds, Object value) {
+        @Cleanup ShardedJedis jedis = shardedJedisPool.getResource();
+        return jedis.setex(key.getBytes(),seconds,serialize(value));
+    }
+
+    @Override
+    public Object getObject(String key) {
+        @Cleanup ShardedJedis jedis = shardedJedisPool.getResource();
+        return unSerialize(jedis.get(key.getBytes()));
+    }
+
+    @Override
+    public long remove(String key) {
+        @Cleanup ShardedJedis jedis = shardedJedisPool.getResource();
+        return jedis.del(key);
     }
 
     @Override

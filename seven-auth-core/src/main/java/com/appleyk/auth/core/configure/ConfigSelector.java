@@ -1,7 +1,7 @@
 package com.appleyk.auth.core.configure;
 
 import com.appleyk.auth.core.config.SeDynamicTableConfig;
-import com.appleyk.auth.core.config.SeRedisPoolConfig;
+import com.appleyk.auth.core.redis.SeRedisPoolConfig;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 

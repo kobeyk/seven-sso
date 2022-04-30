@@ -1,9 +1,10 @@
 package com.appleyk.auth.core.model.base;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
  * <p>所有业务模型对象的基（父）类</p>
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SeObject {
+public class SeObject implements Serializable {
     private Long id;
     private String name;
     private Integer checkStatus = SeCheckStatus.PENDING;

@@ -28,14 +28,14 @@ public abstract class SeDefaultAuthImpl implements ISeAuthManager {
     @Override
     public SeAuthUser register(String userName, String password) throws SeException {
         SeAuthUser authUser = new SeAuthUser(SeIdProducer.getID(),userName,password);
-        userService.insert(authUser);
+        userService.save(authUser);
         return authUser;
     }
 
     @Override
     public SeAuthUser register(String userName, String password, Map<String, Object> info) throws SeException {
         SeAuthUser authUser = new SeAuthUser(SeIdProducer.getID(),userName,password,info);
-        userService.insert(authUser);
+        userService.save(authUser);
         return authUser;
     }
 

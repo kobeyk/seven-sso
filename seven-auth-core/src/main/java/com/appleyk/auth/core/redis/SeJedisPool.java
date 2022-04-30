@@ -1,6 +1,7 @@
-package com.appleyk.auth.core.config;
+package com.appleyk.auth.core.redis;
 
 import com.appleyk.auth.common.helper.SeLoggerHelper;
+import com.appleyk.auth.core.config.SeSsoProperties;
 import com.appleyk.auth.core.service.ASeJedisPool;
 import lombok.Cleanup;
 import org.springframework.beans.factory.DisposableBean;
@@ -38,7 +39,8 @@ public class SeJedisPool extends ASeJedisPool implements InitializingBean, Dispo
         String[] hostAndPort = address.split(":");
         int timeout = properties.getRedis().getTimeout();
         String password = properties.getRedis().getPassword();
-        jedisPool = new JedisPool(poolConfig, hostAndPort[0], Integer.valueOf(hostAndPort[1]), timeout, password, 2);
+        int database = properties.getRedis().getDatabase();
+        jedisPool = new JedisPool(poolConfig, hostAndPort[0], Integer.valueOf(hostAndPort[1]), timeout, password, database);
         SeLoggerHelper.info("========= Redis 单机版完成实例化!");
     }
 
@@ -57,6 +59,30 @@ public class SeJedisPool extends ASeJedisPool implements InitializingBean, Dispo
     public String get(String key) {
         @Cleanup Jedis jedis = jedisPool.getResource();
         return jedis.get(key);
+    }
+
+    @Override
+    public boolean exists(String key) {
+        @Cleanup Jedis jedis = jedisPool.getResource();
+        return jedis.exists(key);
+    }
+
+    @Override
+    public String setObject(String key, int seconds, Object value) {
+        @Cleanup Jedis jedis = jedisPool.getResource();
+        return jedis.setex(key.getBytes(),seconds,serialize(value));
+    }
+
+    @Override
+    public Object getObject(String key) {
+        @Cleanup Jedis jedis = jedisPool.getResource();
+        return unSerialize(jedis.get(key.getBytes()));
+    }
+
+    @Override
+    public long remove(String key) {
+        @Cleanup Jedis jedis = jedisPool.getResource();
+        return jedis.del(key);
     }
 
     @Override
