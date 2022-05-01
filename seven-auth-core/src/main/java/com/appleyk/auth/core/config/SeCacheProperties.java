@@ -21,6 +21,6 @@ public class SeCacheProperties {
     private int size = 10000;
     /** 缓存key存活时间，默认1小时,单位毫秒*/
     private long ttl = 3600000;
-    /**验证码（图形验证码，短信验证码等）超时时间，默认1分钟，单位毫秒*/
-    private long codeTimeout = 60000;
+    /**验证码（图形验证码，短信验证码等）超时时间，默认1分钟60s，单位秒*/
+    private int codeTimeout = 60;
 }

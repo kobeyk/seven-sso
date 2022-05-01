@@ -14,3 +14,8 @@ spring:
       max-lifetime: 30000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+se:
+  sso:
+    cache:
+      bean-name: local
+    verify-code: true

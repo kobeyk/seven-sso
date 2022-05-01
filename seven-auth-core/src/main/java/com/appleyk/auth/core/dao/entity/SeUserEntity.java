@@ -37,7 +37,8 @@ public class SeUserEntity implements IDynamicTableName {
     private Timestamp cTime;
     @Column(name = "utime")
     private Timestamp uTime;
-    private int status = SeCheckStatus.PASSED;
+    /**一定要用包装类型，否则mybatis mapper插入数据库时会忽略*/
+    private Integer status = SeCheckStatus.PASSED;
     private String info;
 
     public SeUserEntity() {
@@ -75,6 +76,9 @@ public class SeUserEntity implements IDynamicTableName {
                     .cTime(new Date(entity.getCTime().getTime())).build();
             authUser.setId(entity.getUid());
             authUser.setName(entity.getName());
+            authUser.setPassword(entity.getPassword());
+            authUser.setUTime(entity.getUTime());
+            authUser.setCheckStatus(entity.getStatus());
             return authUser;
         }catch (Exception e){
             SeLoggerHelper.error(e.getMessage());

@@ -1,4 +1,4 @@
-package com.appleyk.auth.common;
+package com.appleyk.auth.core;
 
 import com.appleyk.auth.common.core.SeResult;
 import com.appleyk.auth.common.excep.SeException;

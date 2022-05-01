@@ -1,10 +1,15 @@
 package com.appleyk.auth.core.service;
 
+import com.appleyk.auth.common.core.ESeResponseCode;
+import com.appleyk.auth.common.excep.SeCommonException;
+import com.appleyk.auth.common.excep.SeException;
+import com.appleyk.auth.common.util.SeGeneralUtils;
 import com.appleyk.auth.core.container.SeSessionCacheBeanContainer;
+import com.appleyk.auth.core.helper.SeTokenHelper;
 import com.appleyk.auth.core.model.session.SeSsoInfo;
 
 /**
- * <p>抽象会话缓存类，实现默认的checkToken，剩下的交给子类去实现</p>
+ * <p>抽象会话缓存类，统一实现token的check功能</p>
  *
  * @author appleyk
  * @version V.0.1.1
@@ -12,16 +17,39 @@ import com.appleyk.auth.core.model.session.SeSsoInfo;
  * @github https://github.com/kobeyk
  * @date created on  下午10:59 2022/3/26
  */
-public abstract class ASeSessionCache implements ISeSessionCache{
+public abstract class ASeSessionCache implements ISeSessionCache {
 
-    public ASeSessionCache(){
-        SeSessionCacheBeanContainer.addCacheBean(this.cacheName(),this);
+    public ASeSessionCache() {
+        SeSessionCacheBeanContainer.addCacheBean(this.cacheName(), this);
     }
 
     public abstract String cacheName();
 
     @Override
-    public SeSsoInfo checkToken(String token) {
+    public SeSsoInfo checkToken(String token) throws SeException {
+        if (SeGeneralUtils.isEmpty(token)){
+            throw new SeCommonException(ESeResponseCode.INVALID_CLIENT, "用户认证失败！令牌不允许空！");
+        }
+        long userId;
+        try {
+            /**验证token合法性，同时解析出uid*/
+            userId = SeTokenHelper.verifyToken(token);
+        } catch (Exception e) {
+            userId = 0L;
+        }
+        if (userId == 0) {
+            throw new SeCommonException(ESeResponseCode.INVALID_CLIENT, "用户认证失败！");
+        }
+        SeSsoInfo ssoInfo = get(userId);
+        /**如果取出来的为空，则表明令牌已过期了*/
+        if (SeGeneralUtils.isEmpty(ssoInfo)) {
+            throw new SeCommonException(ESeResponseCode.EXPIRED_TOKEN, "用户令牌已过期！");
+        }
+        String localToken = ssoInfo.getLocalToken();
+        String clientToken = ssoInfo.getClientToken();
+        if (token.equals(localToken) || token.equals(clientToken)){
+            return ssoInfo;
+        }
         return null;
     }
 }

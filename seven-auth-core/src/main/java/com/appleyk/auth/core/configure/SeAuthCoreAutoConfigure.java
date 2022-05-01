@@ -6,7 +6,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * <p>自动装配</p>
@@ -21,7 +20,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableConfigurationProperties(SeSsoProperties.class)
 @ComponentScan(basePackages ={"com.appleyk.auth.core"})
 @Import(ConfigSelector.class)
-@MapperScan(basePackages = {"com.appleyk.auth.core.dao.mapepr"})
 public class SeAuthCoreAutoConfigure {
     public SeAuthCoreAutoConfigure() {
         SeLoggerHelper.debug("============== seven-auth-core configured! ==============");

@@ -4,6 +4,7 @@ import com.appleyk.auth.common.excep.SeCommonException;
 import com.appleyk.auth.common.excep.SeException;
 import com.appleyk.auth.core.service.ASeJedisPool;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import java.util.Map;
  * @date created on  下午11:05 2022/4/2
  */
 @Component
+@ConditionalOnProperty(prefix = "se.sso.cache",name = "bean-name",havingValue = "redis")
 public class SeRedisInstanceContainer {
     /**redis部署模式（默认单机：jedis）*/
     private static String REDIS_MODE;

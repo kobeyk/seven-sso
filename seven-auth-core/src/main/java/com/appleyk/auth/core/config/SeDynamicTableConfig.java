@@ -22,8 +22,8 @@ public class SeDynamicTableConfig {
         return tableName;
     }
 
-    @Value("${sse.sso.user.tableName:t_sso_use}r")
-    public static void setTableName(String tableName) {
+    @Value("${se.sso.table-name:t_sso_user}")
+    public void setTableName(String tableName) {
         SeDynamicTableConfig.tableName = tableName;
     }
 }

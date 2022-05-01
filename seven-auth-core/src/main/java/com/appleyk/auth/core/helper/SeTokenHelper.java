@@ -60,8 +60,8 @@ public class SeTokenHelper {
         Long appId = ssoInfo.getAppId();
         String localToken = ssoInfo.getLocalToken();
         String clientToken = ssoInfo.getClientToken();
-        long userId = ssoInfo.getUserId();
-        String userName = ssoInfo.getUserName();
+        long userId = ssoInfo.fetchUserId();
+        String userName = ssoInfo.fetchUserName();
         if (SeGeneralUtils.isEmpty(appId) && SeGeneralUtils.isEmpty(localToken)){
             String token = JWT.create()
                     .withClaim(USER_ID,userId)
@@ -82,6 +82,7 @@ public class SeTokenHelper {
                     .sign(algorithm);
             ssoInfo.setClientToken(token);
         }
+        ssoInfo.setLastAccessTime(new Date());
         return ssoInfo;
     }
 

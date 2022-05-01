@@ -43,28 +43,34 @@ public interface ISeAuthManager {
      * @param appId 应用系统ID
      * @return 服务端用户认证缓存信息
      */
-    SeSsoInfo login(String userName,String password,Long appId);
+    SeSsoInfo login(String userName,String password,Long appId) throws SeException;
 
     /**
      * 退出登录
      * @param token 用户令牌
      */
-    void logout(String token);
+    void logout(String token) throws SeException;
 
     /**
-     * 按用户令牌进行登录
+     * 按用户令牌进行登录（利于业务系统缓存该token，以免每次checkToken都要走sso-server）
      * @param token 用户令牌
-     * @param appId 应用系统ID
      * @return 服务端用户认证缓存信息
      */
-    SeSsoInfo loginToken(String token,Long appId);
+    SeSsoInfo loginToken(String token) throws SeException;
 
     /***
      * 校验用户令牌是否合法
      * @param token 用户令牌
      * @return 服务端用户认证缓存信息
      */
-    SeSsoInfo checkToken(String token);
+    SeSsoInfo checkToken(String token) throws SeException;
+
+    /**
+     * 验证key对应的验证码code值是否合法
+     * @param key 可以是userName,也可以是phone，获其他
+     * @param code 验证码，可以使图片验证码、短信验证码或其他
+     */
+    void verifyCode(String key,String code) throws SeException;
 
     /***
      * 第三方登录实现，1.0版本暂不支持

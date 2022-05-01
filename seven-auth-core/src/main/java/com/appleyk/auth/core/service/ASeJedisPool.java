@@ -50,6 +50,7 @@ public abstract class ASeJedisPool {
     public abstract String setex(String key,int seconds,String value);
     /**获取key对应的值*/
     public abstract String get(String key);
+    public abstract Long expire(String key,int seconds);
     /**判断key是否存在*/
     public abstract boolean exists(String key);
     /**序列化key对应的object值，二进制存入reids*/

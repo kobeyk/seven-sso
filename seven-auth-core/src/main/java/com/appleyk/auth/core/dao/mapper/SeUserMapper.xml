@@ -23,7 +23,7 @@
         info,
         status,
         ctime,
-        utime,
+        utime
     </sql>
 
     <update id="updateUserByUserName" parameterType="com.appleyk.auth.core.dao.entity.SeUserEntity">

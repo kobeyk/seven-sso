@@ -2,10 +2,12 @@ package com.appleyk.auth.core.redis;
 
 import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.core.config.SeSsoProperties;
+import com.appleyk.auth.core.container.SeRedisInstanceContainer;
 import com.appleyk.auth.core.service.ASeJedisPool;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.HostAndPort;
@@ -25,6 +27,7 @@ import java.util.Set;
  * @date created on  下午10:43 2022/4/2
  */
 @Component
+@ConditionalOnBean(SeRedisInstanceContainer.class)
 @ConditionalOnProperty(prefix = "se.sso.redis", name = "mode", havingValue = "cluster")
 public class SeJedisCluster extends ASeJedisPool implements InitializingBean, DisposableBean {
 
@@ -82,6 +85,11 @@ public class SeJedisCluster extends ASeJedisPool implements InitializingBean, Di
     @Override
     public long remove(String key) {
         return jedisCluster.del(key);
+    }
+
+    @Override
+    public Long expire(String key,int seconds) {
+        return jedisCluster.expire(key,seconds);
     }
 
     @Override

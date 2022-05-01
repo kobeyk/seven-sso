@@ -25,6 +25,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +43,10 @@ public class SeAuthUserImpl implements ISeAuthUser {
     @Autowired
     private SeUserMapper userMapper;
 
+    public SeAuthUserImpl() {
+        System.out.println();
+    }
+
     @Override
     @Transactional(rollbackFor = {Exception.class})
     public SeAuthUser save(SeAuthUser authUser) throws SeException {
@@ -52,6 +57,8 @@ public class SeAuthUserImpl implements ISeAuthUser {
         if (SeGeneralUtils.isNotEmpty(userDb)){
             throw new SeCommonException(ESeResponseCode.OBJECT_IS_EXIST,"用户名已被占用！");
         }
+        authUser.setCTime(new Date());
+        authUser.setUTime(authUser.getCTime());
         if (userMapper.insert(SeUserEntity.createEntity(authUser)) >0){
             return authUser;
         }else{
@@ -65,6 +72,10 @@ public class SeAuthUserImpl implements ISeAuthUser {
         if (SeGeneralUtils.isEmpty(authUser.getId())) {
             throw new SeCommonException(ESeResponseCode.OBJECT_ID_NOT_EXIST, "用户ID不允许空！");
         }
+        SeAuthUser oldUser = findById(authUser.getId());
+        if (SeGeneralUtils.isEmpty(oldUser)){
+            throw new SeCommonException(ESeResponseCode.OBJECT_NOT_EXIST, "当前用户不存在！");
+        }
         SeUserEntity userEntity = new SeUserEntity();
         userEntity.setUid(authUser.getId());
         /**只能更新昵称、头像和基本信息*/
@@ -75,7 +86,12 @@ public class SeAuthUserImpl implements ISeAuthUser {
         }
         userEntity.setUTime(new Timestamp(System.currentTimeMillis()));
         userMapper.updateUserByUserName(userEntity, SeDynamicTableConfig.tableName);
-        return authUser;
+        oldUser.setAlias(authUser.getAlias());
+        oldUser.setAvatar(authUser.getAvatar());
+        oldUser.setUTime(new Date(userEntity.getUTime().getTime()));
+        oldUser.setInfo(authUser.getInfo());
+        oldUser.setPassword(null);
+        return oldUser;
     }
 
     @Override

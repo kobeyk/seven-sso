@@ -6,7 +6,7 @@ CREATE TABLE "public"."t_sso_user" (
   "info" text COLLATE "pg_catalog"."default",
   "alias" varchar(255) COLLATE "pg_catalog"."default",
   "avatar" varchar(255) COLLATE "pg_catalog"."default",
-  "status" int2,
+  "status" int4,
   "ctime" timestamp(6),
   "utime" timestamp(6)
 )

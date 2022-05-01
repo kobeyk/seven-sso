@@ -36,7 +36,7 @@ public class SeSessionCacheBeanContainer {
         }
     }
     /**这里采用动态注入的方式来取出对应的cache实例*/
-    public ASeSessionCache getSessionCache() throws SeException {
+    public static ASeSessionCache getSessionCache() throws SeException {
         if (caches.size() <= 0){
             throw new SeCommonException("There are no cache beans for user session！");
         }

@@ -3,11 +3,13 @@ package com.appleyk.auth.core.redis;
 import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.common.util.SeGeneralUtils;
 import com.appleyk.auth.core.config.SeSsoProperties;
+import com.appleyk.auth.core.container.SeRedisInstanceContainer;
 import com.appleyk.auth.core.service.ASeJedisPool;
 import lombok.Cleanup;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.JedisPoolConfig;
@@ -28,6 +30,7 @@ import java.util.List;
  * @date created on  下午10:36 2022/4/2
  */
 @Component
+@ConditionalOnBean(SeRedisInstanceContainer.class)
 @ConditionalOnProperty(prefix = "se.sso.redis", name = "mode", havingValue = "shard")
 public class SeJedisShardedPool extends ASeJedisPool implements InitializingBean, DisposableBean {
 
@@ -102,6 +105,12 @@ public class SeJedisShardedPool extends ASeJedisPool implements InitializingBean
     public long remove(String key) {
         @Cleanup ShardedJedis jedis = shardedJedisPool.getResource();
         return jedis.del(key);
+    }
+
+    @Override
+    public Long expire(String key, int seconds) {
+        @Cleanup ShardedJedis jedis = shardedJedisPool.getResource();
+        return jedis.expire(key,seconds);
     }
 
     @Override

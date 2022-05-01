@@ -14,9 +14,13 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
  * @date created on  下午11:41 2022/3/26
  */
 @Data
-@ConfigurationProperties(prefix = "se.sso", ignoreUnknownFields = true)
+@ConfigurationProperties(prefix = "se.sso")
 public class SeSsoProperties {
+    /**是否用户注册时，启用验证码功能，默认启用，主要为了暴力注册*/
+    private boolean verifyCode = true;
+    /**Web站点配置文件路径*/
     private String webSitesPath = "classpath:static/websites.xml";
+    /**认证用户动态表名，如果业务系统也有一个用户表的话，可以和单点的认证表结构保持一致，同时又可以扩展自己的业务*/
     private String tableName = "t_sso_user";
     @NestedConfigurationProperty
     private SeCacheProperties cache = new SeCacheProperties();

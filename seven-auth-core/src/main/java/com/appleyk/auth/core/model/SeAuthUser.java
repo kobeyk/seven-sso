@@ -3,13 +3,14 @@ package com.appleyk.auth.core.model;
 import com.appleyk.auth.core.model.base.SeCheckStatus;
 import com.appleyk.auth.core.model.base.SeObject;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.SequenceInputStream;
 import java.util.Date;
 import java.util.Map;
 
@@ -31,16 +32,20 @@ public class SeAuthUser extends SeObject {
     private String alias;
     /**头像*/
     private String avatar;
-    @JsonIgnore
     /**密码*/
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String password;
     /**用户其他信息*/
     private Map<String,Object> info;
     /**用户创建时间（注册时间）*/
-    @JsonFormat(pattern ="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8" )
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonProperty("cTime")
     private Date cTime;
     /**用户信息修改时间（如改密、改昵称、改头像...etc）*/
-    @JsonFormat(pattern ="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8" )
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonProperty("uTime")
     private Date uTime;
     public SeAuthUser(Long id,String name,String password){
         super(id,name, SeCheckStatus.PASSED);

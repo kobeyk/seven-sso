@@ -1,4 +1,4 @@
-package com.appleyk.auth.common.util;
+package com.appleyk.auth.common.core;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.io.OutputStream;
 import java.util.Random;
 
 /**
- * <p>图形码生成工具类</p>
+ * <p>图形码</p>
  *
  * @author appleyk
  * @version V.0.1.1
@@ -17,7 +17,7 @@ import java.util.Random;
  * @github https://github.com/kobeyk
  * @date created on 2022/3/18-10:08
  */
-public class SeImageCodeUtils {
+public class SeImageCode {
 
     private static Random r = new Random();
     private int w = 71;// 宽
