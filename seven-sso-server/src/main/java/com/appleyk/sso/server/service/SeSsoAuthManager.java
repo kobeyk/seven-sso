@@ -10,7 +10,7 @@ import com.appleyk.auth.core.helper.SeTokenHelper;
 import com.appleyk.auth.core.model.SeAppSite;
 import com.appleyk.auth.core.model.SeAuthUser;
 import com.appleyk.auth.core.model.session.SeSsoInfo;
-import com.appleyk.auth.core.service.impl.ASeDefaultAuthManager;
+import com.appleyk.auth.core.service.impl.ASeAuthManager;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
  * @date created on  上午11:39 2022/5/1
  */
 @Service
-public class SeSsoAuthManager extends ASeDefaultAuthManager {
+public class SeSsoAuthManager extends ASeAuthManager {
     @Override
     public SeSsoInfo doLogin(SeAuthUser authUser, Long appId) throws SeException {
         /**首先先检查缓存中是不是存在，如果存在的话，直接返回*/
@@ -33,7 +33,7 @@ public class SeSsoAuthManager extends ASeDefaultAuthManager {
         }
         /**如果缓存不存在，则新生成token，然后缓存起来*/
         SeSsoInfo ssoInfo = new SeSsoInfo();
-        ssoInfo.setAuthUser(authUser);
+        ssoInfo.setUser(authUser);
         if (SeGeneralUtils.isNotEmpty(appId)) {
             ssoInfo.setAppId(appId);
             if (!SeAppSiteContainer.APP_SITES.containsKey(appId)) {
@@ -55,14 +55,14 @@ public class SeSsoAuthManager extends ASeDefaultAuthManager {
     }
 
     @Override
-    public void doLogout(SeAuthUser authUser) throws SeException {
-        sessionCache().remove(authUser.getId());
+    public void doLogout(String token ,long uid) throws SeException {
+        sessionCache().remove(uid);
     }
 
     @Override
     public SeSsoInfo checkToken(String token) throws SeException {
         long uid;
-        SeSsoInfo ssoInfo = null;
+        SeSsoInfo ssoInfo;
         try {
             uid = SeTokenHelper.verifyToken(token);
             if (SeGeneralUtils.isEmpty(uid)) {

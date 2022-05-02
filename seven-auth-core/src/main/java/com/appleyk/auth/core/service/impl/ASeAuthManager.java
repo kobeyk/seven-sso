@@ -30,7 +30,7 @@ import java.util.Map;
  * @github https://github.com/kobeyk
  * @date created on 2022/3/23-16:47
  */
-public abstract class ASeDefaultAuthManager implements ISeAuthManager {
+public abstract class ASeAuthManager implements ISeAuthManager {
 
     @Autowired
     private ISeAuthUser userService;
@@ -66,19 +66,23 @@ public abstract class ASeDefaultAuthManager implements ISeAuthManager {
             throw new SeCommonException(e.getMessage());
         }
         authUser.setPassword(null);
-        SeSsoInfo seSsoInfo = doLogin(authUser,appId==null?0L:appId);
+        SeSsoInfo ssoInfo = doLogin(authUser,appId==null?0L:appId);
         doAfterLogin(authUser);
-        return seSsoInfo;
+        return ssoInfo;
     }
 
     @Override
-    public SeSsoInfo loginToken(String token) {
+    public SeSsoInfo loginToken(String token) throws SeException{
         return new SeSsoInfo();
     }
 
     @Override
     public SeSsoInfo checkToken(String token) throws SeException{
         return new SeSsoInfo();
+    }
+
+    public SeAuthUser getUser(String token) throws SeException{
+        return new SeAuthUser();
     }
 
     @Override
@@ -94,23 +98,25 @@ public abstract class ASeDefaultAuthManager implements ISeAuthManager {
 
     @Override
     public void logout(String token) throws SeException{
-        /**1、从token中解析出uid*/
-        long uid = SeTokenHelper.decodeToken(token, SeTokenHelper.USER_ID);
-        if (SeGeneralUtils.isEmpty(uid)){
-            throw new SeCommonException(ESeResponseCode.INVALID_CLIENT,"用户令牌认证失效！");
+        /**1、验证token并解析出uid*/
+        long uid;
+        try{
+            uid = SeTokenHelper.verifyToken(token);
+        }catch (Exception e){
+            throw new SeCommonException(ESeResponseCode.INVALID_CLIENT,"无效的用户令牌！");
         }
         /**2、查询认证用户*/
         SeAuthUser authUser = userService.findById(uid);
         /**3、登出前回调*/
         doBeforeLogout(authUser);
         /**4、真正的登出业务逻辑实现*/
-        doLogout(authUser);
+        doLogout(token,uid);
     }
 
     /**子类需要实现登录的业务逻辑，比如缓存session*/
     public abstract SeSsoInfo doLogin(SeAuthUser authUser,Long appId) throws SeException;
     /**子类需要实现登出的业务逻辑，比如移除session*/
-    public abstract void doLogout(SeAuthUser authUser) throws SeException;
+    public abstract void doLogout(String token,long uid) throws SeException;
 
     /**登录后回调*/
     public void doAfterLogin(SeAuthUser authUser){

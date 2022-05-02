@@ -43,7 +43,7 @@ public class SeSessionCacheBeanContainer {
         return caches.get(CACHE_BEAN_NAME);
     }
 
-    @Value("${se.sso.cache.beanName:local}")
+    @Value("${se.sso.cache.bean-name:local}")
     public void setCacheBeanName(String cacheBeanName){
         CACHE_BEAN_NAME = cacheBeanName;
     }

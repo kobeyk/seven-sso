@@ -12,6 +12,23 @@
     <artifactId>seven-auth-client</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <!-- 引入client模块，client模块负责与sso-server进行"通信" -->
+        <dependency>
+            <groupId>com.appleyk</groupId>
+            <artifactId>seven-sso-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>${project.name}</finalName>
         <plugins>

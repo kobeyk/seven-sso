@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.appleyk</groupId>
-            <artifactId>seven-sso-client</artifactId>
+            <artifactId>seven-auth-core</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

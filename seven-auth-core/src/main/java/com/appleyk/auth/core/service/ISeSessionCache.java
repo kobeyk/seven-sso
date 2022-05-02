@@ -49,7 +49,6 @@ public interface ISeSessionCache {
      */
     void put(String key,String code) throws SeException;
 
-
     /** 清除指定key的缓存数据，如清除手机号或用户名对应的code值*/
     void remove(String key) throws SeException;
 

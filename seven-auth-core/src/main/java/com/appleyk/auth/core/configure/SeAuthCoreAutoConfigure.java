@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * <p>自动装配</p>
+ * <p>核心认证core模块bean自动装配配置类</p>
  *
  * @author appleyk
  * @version V.0.1.1

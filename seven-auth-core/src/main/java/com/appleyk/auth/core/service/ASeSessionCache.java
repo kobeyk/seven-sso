@@ -8,6 +8,8 @@ import com.appleyk.auth.core.container.SeSessionCacheBeanContainer;
 import com.appleyk.auth.core.helper.SeTokenHelper;
 import com.appleyk.auth.core.model.session.SeSsoInfo;
 
+import java.util.Date;
+
 /**
  * <p>抽象会话缓存类，统一实现token的check功能</p>
  *
@@ -37,19 +39,21 @@ public abstract class ASeSessionCache implements ISeSessionCache {
         } catch (Exception e) {
             userId = 0L;
         }
-        if (userId == 0) {
-            throw new SeCommonException(ESeResponseCode.INVALID_CLIENT, "用户认证失败！");
+        if (0 == userId) {
+            throw new SeCommonException(ESeResponseCode.INVALID_TOKEN, "无效的用户令牌，获取用户信息失败！");
         }
         SeSsoInfo ssoInfo = get(userId);
-        /**如果取出来的为空，则表明令牌已过期了*/
+        /**如果取出来的为空，表明令牌已过期了*/
         if (SeGeneralUtils.isEmpty(ssoInfo)) {
             throw new SeCommonException(ESeResponseCode.EXPIRED_TOKEN, "用户令牌已过期！");
         }
         String localToken = ssoInfo.getLocalToken();
         String clientToken = ssoInfo.getClientToken();
         if (token.equals(localToken) || token.equals(clientToken)){
+            ssoInfo.setLastAccessTime(new Date());
             return ssoInfo;
+        }else{
+            throw new SeCommonException(ESeResponseCode.INVALID_TOKEN,"无效的用户令牌！");
         }
-        return null;
     }
 }

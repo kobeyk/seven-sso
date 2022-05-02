@@ -13,10 +13,19 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!-- 引入local模块 -->
+        <dependency>
+            <groupId>com.appleyk</groupId>
+            <artifactId>seven-sso-local</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.2.2.RELEASE</version>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
 

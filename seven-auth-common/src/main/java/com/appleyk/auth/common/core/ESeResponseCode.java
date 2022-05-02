@@ -33,6 +33,8 @@ public enum ESeResponseCode {
     INVALID_APP_ID(10207, "无效的应用站点ID!"),
     WEEK_PASSWORD(10208, "无效的应用站点ID!"),
     INVALID_PASSWORD(10209, "无效的应用站点ID!"),
+    UNUSABLE_SERVICE(10210, "无效的服务!"),
+    INVALID_TOKEN(10211, "无效的用户令牌!"),
     DATA_CREATE_ERROR(10300, "数据创建失败"),
     DATA_DELETE_ERROR(10301, "数据删除失败"),
     DATA_UPDATE_ERROR(10302, "数据更新失败"),
@@ -43,6 +45,15 @@ public enum ESeResponseCode {
     private ESeResponseCode(Integer code, String name) {
         this.code = code;
         this.name = name;
+    }
+
+    public static ESeResponseCode getEnum(int code) {
+        for (ESeResponseCode type : ESeResponseCode.values()) {
+            if (type.getCode() == code) {
+                return type;
+            }
+        }
+        return null;
     }
 
     public Integer getCode() {

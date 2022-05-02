@@ -54,14 +54,14 @@ public interface ISeAuthManager {
     /**
      * 按用户令牌进行登录（利于业务系统缓存该token，以免每次checkToken都要走sso-server）
      * @param token 用户令牌
-     * @return 服务端用户认证缓存信息
+     * @return 服务端认证用户session
      */
     SeSsoInfo loginToken(String token) throws SeException;
 
     /***
      * 校验用户令牌是否合法
      * @param token 用户令牌
-     * @return 服务端用户认证缓存信息
+     * @return 服务端认证用户session
      */
     SeSsoInfo checkToken(String token) throws SeException;
 

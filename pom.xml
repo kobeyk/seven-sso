@@ -56,7 +56,10 @@
         <commons.lang3.version>3.8.1</commons.lang3.version>
         <!-- redis 客户端连接工具-->
         <redis.client.version>4.1.0</redis.client.version>
-        <expiringmap.version>0.5.8</expiringmap.version>
+        <!-- 基于内存的带过期时间的高性能多线性安全的Map -->
+        <expiringmap.version>0.5.9</expiringmap.version>
+        <!-- OpenFeign 全称 Spring Cloud OpenFeign，它是 Spring 官方推出的一种声明式服务调用与负载均衡组件，它的出现就是为了替代进入停更维护状态的 Feign -->
+        <springcloud.openfeign.version>2.2.2.RELEASE</springcloud.openfeign.version>
     </properties>
 
     <!--统一POM依赖管理-->
@@ -113,6 +116,12 @@
                 <groupId>net.jodah</groupId>
                 <artifactId>expiringmap</artifactId>
                 <version>${expiringmap.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${springcloud.openfeign.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

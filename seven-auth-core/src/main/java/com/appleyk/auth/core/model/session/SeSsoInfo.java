@@ -2,9 +2,12 @@ package com.appleyk.auth.core.model.session;
 
 import com.appleyk.auth.core.model.SeAuthUser;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -19,9 +22,11 @@ import java.util.Date;
  * @date created on 2022/3/23-9:40
  */
 @Data
-public class SeSsoInfo {
+@NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class SeSsoInfo implements Serializable {
     /**认证用户*/
-    private SeAuthUser authUser;
+    private SeAuthUser user;
     /**登录应用ID*/
     private Long appId;
     /** 当 AppId=0 或 不填写时，即单应用系统站点时，使用该token*/
@@ -33,16 +38,19 @@ public class SeSsoInfo {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date lastAccessTime;
+    public SeSsoInfo(SeAuthUser user){
+        this.user = user;
+    }
     public long fetchUserId(){
-        if (getAuthUser() == null){
+        if (getUser() == null){
             return 0L;
         }
-        return getAuthUser().getId();
+        return getUser().getId();
     }
     public String fetchUserName(){
-        if (getAuthUser() == null){
+        if (getUser() == null){
             return "";
         }
-        return getAuthUser().getName();
+        return getUser().getName();
     }
 }

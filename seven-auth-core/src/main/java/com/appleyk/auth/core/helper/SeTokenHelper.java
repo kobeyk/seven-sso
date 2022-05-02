@@ -147,7 +147,7 @@ public class SeTokenHelper {
         SeAuthUser authUser = new SeAuthUser();
         authUser.setId(11111L);
         authUser.setName("appleyk");
-        seSsoInfo.setAuthUser(authUser);
+        seSsoInfo.setUser(authUser);
         SeSsoInfo info = createToken(seSsoInfo);
         String token = info.getClientToken();
         System.out.println(token);

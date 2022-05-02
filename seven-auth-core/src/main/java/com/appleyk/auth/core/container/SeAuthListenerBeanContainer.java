@@ -15,6 +15,7 @@ import java.util.List;
  * @date created on 2022/3/23-16:03
  */
 public class SeAuthListenerBeanContainer {
+    /**监听器有序，先来先执行*/
     private static List<ASeAuthListener> listeners = new LinkedList<>();
     private SeAuthListenerBeanContainer(){}
     public static void addListener(int order,ASeAuthListener authListener) {
