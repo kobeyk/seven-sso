@@ -10,15 +10,15 @@
     <packaging>pom</packaging>
 
     <modules>
-        <!-- 通用模块,如果异常定义、响应结果封装、id生成器等-->
+        <!-- 通用模块,如异常定义、响应结果封装、id生成器等-->
         <module>seven-auth-common</module>
-        <!--核心模块-->
+        <!--核心认证模块-->
         <module>seven-auth-core</module>
         <!--单机版模块（全套）-->
         <module>seven-sso-local</module>
         <!--客户端模块（应用App需引入）-->
         <module>seven-sso-client</module>
-        <!--服务端模块（提供认证服务）-->
+        <!--服务端模块（提供统一认证服务）-->
         <module>seven-sso-server</module>
         <!--测试模块（分为local版和client版）-->
         <module>seven-app-test</module>
@@ -27,7 +27,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <!--boot版本官方更新的较频繁，这里仅取个看着顺眼的版本不老的，有追高需求的可以替换-->
+        <!--boot版本官方更新的较频繁，这里仅取个看着顺眼的版本也不老的，有追高需求的可以替换-->
         <version>2.2.2.RELEASE</version>
     </parent>
 
@@ -47,7 +47,7 @@
         <pagehelper.version>1.2.10</pagehelper.version>
         <!--Mybatis 通用 Mapper Jar 集成-->
         <tk.mybatis.version>2.1.5</tk.mybatis.version>
-        <!--Java JDBC 4.2 (JRE 8+) driver for PostgreSQL database-->
+        <!--Java JDBC 4.2 (JRE 8+) driver for postgresQL database-->
         <postgresql.version>42.2.5</postgresql.version>
         <!--Java implementation of JSON Web Token (JWT)-->
         <java.jwt.version>3.8.0</java.jwt.version>

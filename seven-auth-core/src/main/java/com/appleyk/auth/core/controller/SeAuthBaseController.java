@@ -20,13 +20,11 @@ import com.appleyk.auth.core.service.impl.ASeAuthManager;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.util.regex.Pattern;
 
-@RestController
 public class SeAuthBaseController {
 
     @Autowired
