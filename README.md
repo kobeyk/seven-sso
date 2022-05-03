@@ -16,8 +16,7 @@
 
 #### 项目模块图
 
-![Seven-SSO模块图](https://gitee.com/appleyk/seven-rpc/raw/master/src/main/resources/static/images/%E6%9E%B6%E6%9E%841.png)
-
+![Seven-SSO模块图](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/1.modules.png)
 
 
 #### 安装教程
