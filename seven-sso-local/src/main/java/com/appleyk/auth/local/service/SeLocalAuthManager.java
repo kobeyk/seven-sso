@@ -37,6 +37,7 @@ public class SeLocalAuthManager extends ASeAuthManager {
         ssoInfo = new SeSsoInfo(authUser);
         try {
             ssoInfo = SeTokenHelper.createToken(ssoInfo);
+            sessionCache().put(authUser.getId(),ssoInfo);
             return ssoInfo;
         } catch (Exception e) {
             SeLoggerHelper.error(String.format("用户UID：%s,生成token异常 - %s", authUser.getId(), e.getCause()), e);

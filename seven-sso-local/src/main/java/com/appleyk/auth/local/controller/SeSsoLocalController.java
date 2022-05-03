@@ -6,6 +6,9 @@ import com.appleyk.auth.core.controller.SeAuthBaseController;
 import com.appleyk.auth.core.model.SeAuthUser;
 import com.appleyk.auth.core.model.SeLoginUser;
 import com.appleyk.auth.core.model.SeRegister;
+import com.appleyk.auth.core.model.session.SeSsoInfo;
+import com.appleyk.auth.core.service.impl.ASeAuthManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +27,9 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/auth")
 public class SeSsoLocalController extends SeAuthBaseController {
 
+    @Autowired
+    private ASeAuthManager authManager;
+
     @PostMapping("/register")
     public SeResult register(@RequestBody SeRegister register) throws SeException {
         return super.register(register);
@@ -41,7 +47,8 @@ public class SeSsoLocalController extends SeAuthBaseController {
 
     @GetMapping("/checkToken")
     public SeResult checkToken(@RequestHeader String token) throws SeException {
-        return super.checkToken(token);
+        SeSsoInfo ssoInfo = authManager.checkToken(token);
+        return SeResult.ok("验证通过！",ssoInfo.getUser());
     }
 
     /**

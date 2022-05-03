@@ -1,6 +1,7 @@
 package com.appleyk.auth.common.core;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.util.Date;
@@ -18,6 +19,7 @@ import java.util.Date;
 public class SeResult {
     private int status;
     private String message;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object data;
     @JsonFormat(pattern ="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8" )
     private Date timestamp;

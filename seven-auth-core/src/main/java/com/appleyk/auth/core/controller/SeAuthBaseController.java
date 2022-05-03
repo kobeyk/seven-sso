@@ -44,9 +44,11 @@ public class SeAuthBaseController {
             long uid = SeTokenHelper.verifyToken(token);
             SeAuthUser authUser = userService.findById(uid);
             authUser.setPassword(null);
-            return SeResult.ok("获取成功!",authUser);
+            return SeResult.ok("获取成功!", authUser);
+        } catch (SeException se) {
+            throw se;
         } catch (Exception e) {
-            SeLoggerHelper.error(e.getMessage(),e);
+            SeLoggerHelper.error(e.getMessage(), e);
             throw new SeCommonException("获取用户信息失败！");
         }
     }

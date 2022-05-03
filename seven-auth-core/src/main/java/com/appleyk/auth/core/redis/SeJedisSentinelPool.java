@@ -51,7 +51,8 @@ public class SeJedisSentinelPool extends ASeJedisPool implements InitializingBea
             sentinels.add(addr);
         }
         jedisSentinelPool = new JedisSentinelPool(masterName, sentinels, poolConfig, password);
-        SeLoggerHelper.debug("========= Redis 哨兵版完成实例化!");
+        isAvailable();
+        SeLoggerHelper.debug("========= Redis Sentinel instantiation done !");
     }
 
     @Override

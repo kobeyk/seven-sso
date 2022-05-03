@@ -1,5 +1,8 @@
 package com.appleyk.auth.core.service;
 
+import com.appleyk.auth.common.core.ESeResponseCode;
+import com.appleyk.auth.common.excep.SeCommonException;
+import com.appleyk.auth.common.excep.SeException;
 import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.core.container.SeRedisInstanceContainer;
 
@@ -44,6 +47,16 @@ public abstract class ASeJedisPool {
             }
         }
         return null;
+    }
+    /**redis服务是否可用*/
+    public boolean isAvailable() throws SeException{
+        try{
+            exists(mode());
+            return true;
+        }catch (Exception e){
+            SeLoggerHelper.error(e.getMessage());
+            throw new SeCommonException(ESeResponseCode.UNUSABLE_SERVICE,e.getMessage());
+        }
     }
     public abstract String mode();
     /**redis 的 setx命令是原子操作，即保证设置值和key的过期时间两个动作在同一时间内完成*/

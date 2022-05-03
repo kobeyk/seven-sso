@@ -18,7 +18,7 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 public class SeSsoProperties {
     /**统一用户认证中心服务端点地址（sso-server服务地址）*/
     private String endpoint = "http://localhost:8080";
-    /**是否用户注册时，启用验证码功能，默认启用，主要为了暴力注册*/
+    /**是否用户注册时，启用验证码功能，默认启用，主要为了防止暴力注册*/
     private boolean verifyCode = true;
     /**Web站点配置文件路径*/
     private String webSitesPath = "classpath:static/websites.xml";

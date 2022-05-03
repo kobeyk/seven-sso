@@ -63,7 +63,8 @@ public class SeJedisShardedPool extends ASeJedisPool implements InitializingBean
             shardInfos.add(jedisShardInfo);
         }
         shardedJedisPool = new ShardedJedisPool(poolConfig, shardInfos);
-        SeLoggerHelper.debug("========= Redis 分片版完成实例化!");
+        isAvailable();
+        SeLoggerHelper.debug("========= Redis shard instantiation done!");
     }
 
     @Override

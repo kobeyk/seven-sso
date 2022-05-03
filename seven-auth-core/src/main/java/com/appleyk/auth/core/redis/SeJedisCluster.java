@@ -49,7 +49,7 @@ public class SeJedisCluster extends ASeJedisPool implements InitializingBean, Di
             nodes.add(hostAndPort);
         }
         this.jedisCluster = new JedisCluster(nodes, poolConfig);
-        SeLoggerHelper.debug("========= Redis 集群版完成实例化!");
+        SeLoggerHelper.debug("========= Redis cluster instantiation done!");
     }
 
     @Override

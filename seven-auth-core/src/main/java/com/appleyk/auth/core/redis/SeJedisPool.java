@@ -44,7 +44,9 @@ public class SeJedisPool extends ASeJedisPool implements InitializingBean, Dispo
         String password = properties.getRedis().getPassword();
         int database = properties.getRedis().getDatabase();
         jedisPool = new JedisPool(poolConfig, hostAndPort[0], Integer.valueOf(hostAndPort[1]), timeout, password, database);
-        SeLoggerHelper.info("========= Redis 单机版完成实例化!");
+        /**完成实例化后，检查下redis服务是否可用，就是执行最简单的cmd，如果成功，则证明redis服务是ok的*/
+        isAvailable();
+        SeLoggerHelper.info("========= Redis local instantiation done!");
     }
 
     @Override
