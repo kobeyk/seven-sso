@@ -42,7 +42,7 @@ public enum ESeResponseCode {
     private final Integer code;
     private final String name;
 
-    private ESeResponseCode(Integer code, String name) {
+    ESeResponseCode(Integer code, String name) {
         this.code = code;
         this.name = name;
     }

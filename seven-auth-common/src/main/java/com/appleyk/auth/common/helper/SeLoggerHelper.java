@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p></p>
+ * <p>日志记录帮助类</p>
  *
  * @author appleyk
  * @version V.0.1.1
@@ -29,14 +29,14 @@ public class SeLoggerHelper {
     }
 
     public static void error(Integer errCode, String message) {
-        logger.error("错误码：" + errCode + "，错误消息：" + message);
+        logger.error("errCode：" + errCode + "，errMsg：" + message);
     }
 
     public static void error(String message) {
-        logger.error("错误消息：" + message);
+        logger.error("errMsg：" + message);
     }
 
     public static void error(Integer errCode, String message, Exception ex) {
-        logger.error("错误码：" + errCode + "，错误消息：" + message + ",异常信息：" + ex.getMessage());
+        logger.error("errCode：" + errCode + "，errMsg：" + message + ",expMsg：" + ex.getMessage());
     }
 }
