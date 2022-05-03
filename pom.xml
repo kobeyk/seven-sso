@@ -22,6 +22,10 @@
         <module>seven-sso-server</module>
         <!--测试模块（分为local版和client版）-->
         <module>seven-app-test</module>
+        <!-- 控制台（前端项目） -->
+        <module>seven-auth-admin</module>
+        <!-- React前端模块（前后端分离） -->
+        <module>seven-sso-ui</module>
     </modules>
 
     <parent>

@@ -1,0 +1,12 @@
+server:
+  port: 8866
+spring:
+  thymeleaf:
+    suffix: .html
+    prefix: classpath:/templates/sso/
+  resources:
+    static-locations: classpath:/templates/sso/
+  jmx:
+    default-domain: auth-admin-server
+  application:
+    name: auth-admin-server
