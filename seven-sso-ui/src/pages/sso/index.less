@@ -1,0 +1,71 @@
+// 3、单点登录/注册表单区域
+.sso-form {
+    position: absolute;
+    top: 200px;
+    // 浏览器视口宽度的15%
+    right: 15vw;
+    background-color: #fff;
+    width: 400px;
+    // 整体边框来个圆角
+    border-radius: 2%;
+
+    // 3.1 表单的头部（含登录和注册部分）
+    .sso-form-header {
+        height: 54px;
+        line-height: 42px;
+        font-size: 20px;
+        // 上边距保持一点举例，协调一些
+        padding-top: 20px;
+
+        // 3.1.1 登录样式(其中包含两个子样式，登录默认样式和选中样式)
+        .sso-form-header-login {
+            width: 45%;
+            float: left;
+            // 靠右对齐，这样整体看起来就是居中的
+            text-align: right;
+
+            // 3.1.1.1 默认登录样式
+            .form-login {
+                width: 60px;
+                text-align: center;
+                margin-left: 70%;
+                color: #969799;
+                cursor: pointer;
+            }
+
+            // 3.1.1.2 登录div选中后的样式
+            .form-login-selected {
+                width: 60px;
+                text-align: center;
+                margin-left: 70%;
+                color: #969799;
+                // 设定鼠标形状为手指
+                cursor: pointer;
+                color: #FC4C02;
+                border-bottom: 2px solid #FC4C02;
+            }
+        }
+
+        // 3.2.1 注册样式(其中包含两个子样式，注册默认样式和选中样式)
+        .sso-form-header-register {
+            width: 45%;
+            float: right;
+
+            // 3.2.1.1 注册div默认样式
+            .form-register {
+                width: 60px;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            // 3.2.1.2 注册div选中后的样式
+            .form-register-selected {
+                width: 60px;
+                text-align: center;
+                cursor: pointer;
+                border-bottom: 2px solid #FC4C02;
+                color: #FC4C02;
+            }
+        }
+    }
+}
