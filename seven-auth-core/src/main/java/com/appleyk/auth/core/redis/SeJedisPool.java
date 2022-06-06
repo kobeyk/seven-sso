@@ -1,6 +1,8 @@
 package com.appleyk.auth.core.redis;
 
+import com.appleyk.auth.common.excep.SeCommonException;
 import com.appleyk.auth.common.helper.SeLoggerHelper;
+import com.appleyk.auth.common.util.SeGeneralUtils;
 import com.appleyk.auth.core.config.SeSsoProperties;
 import com.appleyk.auth.core.container.SeRedisInstanceContainer;
 import com.appleyk.auth.core.service.ASeJedisPool;
@@ -38,12 +40,21 @@ public class SeJedisPool extends ASeJedisPool implements InitializingBean, Dispo
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        String address = properties.getRedis().getAddress();
+        /**消除空格*/
+        String address = properties.getRedis().getAddress().replaceAll(" ","");
+        if (SeGeneralUtils.isEmpty(address)){
+            throw new SeCommonException("redis address is null! service start failure.");
+        }
         String[] hostAndPort = address.split(":");
+        String port = "6379";
+        if (SeGeneralUtils.isNotEmpty(hostAndPort) && hostAndPort.length == 2){
+            /**端口默认6379*/
+            port = hostAndPort[1];
+        }
         int timeout = properties.getRedis().getTimeout();
         String password = properties.getRedis().getPassword();
         int database = properties.getRedis().getDatabase();
-        jedisPool = new JedisPool(poolConfig, hostAndPort[0], Integer.valueOf(hostAndPort[1]), timeout, password, database);
+        jedisPool = new JedisPool(poolConfig, hostAndPort[0], Integer.valueOf(port), timeout, password, database);
         /**完成实例化后，检查下redis服务是否可用，就是执行最简单的cmd，如果成功，则证明redis服务是ok的*/
         isAvailable();
         SeLoggerHelper.info("========= Redis local instantiation done!");

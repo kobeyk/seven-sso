@@ -5,6 +5,7 @@ import com.appleyk.auth.common.excep.SeCommonException;
 import com.appleyk.auth.common.excep.SeException;
 import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.core.container.SeRedisInstanceContainer;
+import redis.clients.jedis.exceptions.JedisConnectionException;
 
 import java.io.*;
 
@@ -53,7 +54,10 @@ public abstract class ASeJedisPool {
         try{
             exists(mode());
             return true;
-        }catch (Exception e){
+        }catch (JedisConnectionException connE){
+            SeLoggerHelper.error("Redis connect failure.Please check your address,port number and the password.");
+            throw new SeCommonException(ESeResponseCode.UNUSABLE_SERVICE,connE.getMessage());
+        } catch (Exception e){
             SeLoggerHelper.error(e.getMessage());
             throw new SeCommonException(ESeResponseCode.UNUSABLE_SERVICE,e.getMessage());
         }
