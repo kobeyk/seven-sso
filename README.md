@@ -18,6 +18,9 @@
 
 ![Seven-SSO模块图](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/1.modules.png)
 
+#### 项目接口文档
+
+![Seven-SSO接口文档](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/2.apidoc.jpg)
 
 #### 安装教程
 

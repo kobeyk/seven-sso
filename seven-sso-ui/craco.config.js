@@ -34,11 +34,13 @@ module.exports = {
         alias: {
             "@": resolve("src"),
             "@components": resolve("src/components"),
+            "@assets": resolve("src/assets"),
+            "@typings": resolve("src/typings"),
+            "@utils": resolve("src/utils"),
             "@pages": resolve("src/pages"),
             "@routes": resolve("src/routes"),
             "@models": resolve("src/models"),
             "@services": resolve("src/services"),
-
         }
     }
 };

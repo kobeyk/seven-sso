@@ -20,5 +20,5 @@ se:
   sso:
     cache:
       bean-name: local
-    table-name: t_user
-    verify-code: false
+    table-name: t_sso_user #这里也可以指定为业务的user表，只要业务user表包含sso_user表字段即可
+    verify-code: false #注册功能不开启验证码

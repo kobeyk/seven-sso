@@ -1,5 +1,5 @@
 server:
-  port:8080
+  port: 8080
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
@@ -20,4 +20,4 @@ se:
   sso:
     cache:
       bean-name: local
-    verify-code: true
+    verify-code: false

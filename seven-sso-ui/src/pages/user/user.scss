@@ -1,0 +1,50 @@
+.user-login-regist {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  width: 100%;
+  .user-header {
+    padding: 20px 30px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    span {
+      margin-left: 15px;
+      font-size: 28px;
+      color: #fd9927;
+    }
+    img{
+      width: 60px;
+      height: 60px;
+    }
+  }
+  .user-content {
+    flex: 1;
+    background: url("../../assets/images/login-bg.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .user-form {
+      background-color: white;
+      width: 400px;
+      /**这里有个细节，不给form高度，让内容区撑开盒子即可*/
+      padding: 0 30px;
+      border: 1px solid black;
+      border-radius: 5px;
+      .ant-input{
+        height: 40px;
+      }
+      .form-title {
+        font-size: 25px;
+        text-align: center;
+        padding: 25px 0;
+      }
+      .form-footer {
+        margin-top: 5px;
+        color: orange;
+      }
+    }
+  }
+}

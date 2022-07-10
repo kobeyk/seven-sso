@@ -29,7 +29,9 @@ public class SeSsoAuthManager extends ASeAuthManager {
         /**首先先检查缓存中是不是存在，如果存在的话，直接返回*/
         SeSsoInfo cacheSsoInfo = sessionCache().get(authUser.getId());
         if (SeGeneralUtils.isNotEmpty(cacheSsoInfo) && appId.equals(cacheSsoInfo.getAppId())) {
-            return cacheSsoInfo;
+            if (SeGeneralUtils.isNotEmpty(appId) && SeGeneralUtils.isNotEmpty(cacheSsoInfo.getCallbackUrl())){
+                return cacheSsoInfo;
+            }
         }
         /**如果缓存不存在，则新生成token，然后缓存起来*/
         SeSsoInfo ssoInfo = new SeSsoInfo();
