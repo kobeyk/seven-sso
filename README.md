@@ -14,25 +14,51 @@
 
 ```
 
+#### 项目技术栈
+
+##### 后端
+- SpringBoot 2.2.2.RELEASE 
+- Mybatis 3.4.6 
+- Tk.Mybatis.SpringBoot 2.1.5
+- PageHelper.SpringBoot 1.2.10
+- Jedis 3.1.0
+- Expiringmap 0.5.9
+- JWT 3.8.0
+- PostgreSql 42.2.5
+- Lombok 1.18.10
+##### 前端
+- React 17.0.2
+- DvaJs 2.6.0-beta.22
+- React-Router-Dom v5 (dva模块中自带) 
+- AntD 4.21.0
+- Axios 0.27.2
+- TypeScript 4.4.2
+- Craco 6.4.3 (打包模块)
+
 #### 项目模块图
 
 ![Seven-SSO模块图](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/1.modules.png)
 
+#### 项目核心业务模块设计
+- EA文件位置：src/main/resources/static/ea/seven-sso.eapx
+
+![Seven-SSO模块图](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/3.design.png)
+
+
 #### 项目接口文档
+-接口文档位置：src/main/resources/static/api
 
 ![Seven-SSO接口文档](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/2.apidoc.jpg)
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  git clone xxxxx 
+2.  mvn clean package -DskipTests=true
+3.  分别启动seven-sso-server、seven-auth-client和seven-auth-admin模块服务
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+没有什么好说的，跑一遍代码然后看下源码调一调跟一跟就看懂了，很简单的。
 
 #### 参与贡献
 
@@ -42,6 +68,4 @@
 4.  新建 Pull Request
 5.  如果你提交的request对项目有用，我会merge的
 
-
-#### 特技
 

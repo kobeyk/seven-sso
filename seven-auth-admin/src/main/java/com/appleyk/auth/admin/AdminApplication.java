@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * <p>越努力，越幸运</p>
- * 访问sso页面：http://localhost:8866/
+ * 访问sso前端页面：http://localhost:8866/
  * @author appleyk
  * @version V.0.1.1
  * @blob https://blog.csdn.net/appleyk

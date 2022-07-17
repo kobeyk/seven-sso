@@ -1,0 +1,11 @@
+{
+  "name": "七仔单点登录接口API",
+  "version": "0.1.1",
+  "description": "v0.1.1 七仔单点登录 -- 接口文档",
+  "title": "七仔单点登录",
+  "url" : "http://127.0.0.1:8080/auth",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  }
+}
