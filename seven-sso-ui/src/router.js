@@ -2,6 +2,7 @@ import { router } from "dva";
 import { dynamic } from "dva";
 import userRoutes from '@routes/userRoutes';
 import indexRoutes from '@routes/indexRoutes';
+
 /**
  * <p>DvaJS+RRD·v5版本的静态路由配置转换为全局路由组件经典实现</p>
  * @author appleyk

@@ -21,12 +21,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface SeTokenAuthClient {
 
     @RequestMapping(value="/auth/checkToken",method = RequestMethod.GET,consumes= MediaType.APPLICATION_JSON_VALUE)
-    SeResult checkToken(@RequestHeader String token) throws SeException;
+    SeResult checkToken(@RequestHeader("token") String token) throws SeException;
 
     @RequestMapping(value="/auth/logout",method = RequestMethod.GET,consumes= MediaType.APPLICATION_JSON_VALUE)
-    SeResult logout(@RequestHeader String token) throws SeException;
+    SeResult logout(@RequestHeader("token") String token) throws SeException;
 
     @RequestMapping(value="/auth/getUser",method = RequestMethod.GET,consumes= MediaType.APPLICATION_JSON_VALUE)
-    SeResult getUser(@RequestHeader String token) throws SeException;
+    SeResult getUser(@RequestHeader("token") String token) throws SeException;
 
 }

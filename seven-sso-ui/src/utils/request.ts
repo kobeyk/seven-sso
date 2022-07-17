@@ -1,11 +1,10 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { message } from 'antd';
-import serverConfig from "@/config/config";
-import GeneralUtil from './GeneralUtil';
+import GeneralUtil from '@/typings/util/GeneralUtils';
 
 /** 创建axios实例 */
 const apiService = axios.create({
-    baseURL: serverConfig.ssoUrl,
+    baseURL: window.server.ssoUrl,
     timeout: 30 * 1000,
     headers: {
         "Content-Type": "application/json",
@@ -25,6 +24,7 @@ apiService.interceptors.request.use(
     /** 配置config，config里面包含了请求头的设置 */
     (config: AxiosRequestConfig) => {
         let token = localStorage.getItem("token");
+        /** 如果token不空的话，设置到请求头中 */
         if (token) {
             config.headers!["token"] = token;
         }
@@ -63,11 +63,11 @@ apiService.interceptors.response.use(
 
 /** 统一定义axios请求方法格式，封装成一个函数 */
 const axiosFn = {
-
     // get请求
     commonOnGet: (url: string, params: any, token: string = "") => {
         let config;
         if (GeneralUtil.isEmpty(token)) {
+            /** 不带token */
             config = { params }
         } else {
             /** 带token */

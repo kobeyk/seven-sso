@@ -1,14 +1,12 @@
 
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input } from "antd";
 import { FC, ReactElement, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import userService from "@/services/UserService";
 import { connect, Dispatch } from "dva";
-import GeneralUtil from "@/utils/GeneralUtil";
+import GeneralUtil from "@/typings/util/GeneralUtils";
 import serverConfig from "@/config/config";
 import { SLoginUser } from "@/typings/SLoginUser";
-
 
 interface IUserContentProps {
   /** 表单标题 */
@@ -76,7 +74,7 @@ const UserForm: FC<IUserContentProps> = ({
         },
       ]);
     }
-  }, []);
+  }, [bLogin]);
 
   /** 表单提交函数，这里通过拿到form的values然后调用后端接口 */
   const onFinish = () => {
@@ -195,13 +193,13 @@ const UserForm: FC<IUserContentProps> = ({
           initialValues={{ remember: true }}
           onFinish={onFinish}
         >
-          <Form.Item name="name" rules={nameValidRules} initialValue="">
+          <Form.Item name="name" rules={nameValidRules}>
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder="请输入用户名"
             />
           </Form.Item>
-          <Form.Item name="password" rules={passwordValidRules} initialValue="">
+          <Form.Item name="password" rules={passwordValidRules}>
             <Input
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"

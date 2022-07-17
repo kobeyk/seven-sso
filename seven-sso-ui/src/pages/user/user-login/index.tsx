@@ -1,4 +1,4 @@
-import { FC, ReactElement, useEffect } from 'react';
+import { FC, ReactElement } from 'react';
 import { RouteComponentProps } from "react-router-dom";
 import UserForm from "@components/UserForm";
 import UserHeader from "@components/UserHeader";

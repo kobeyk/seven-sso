@@ -1,12 +1,12 @@
-import { message, Select } from 'antd';
-import { ISRegister } from './../typings/ISRegister';
-import { SLoginUser } from './../typings/SLoginUser';
+import { message } from 'antd';
+import { ISRegister } from '@/typings/ISRegister';
+import { SLoginUser } from '@/typings/SLoginUser';
 import { SUser } from '@/typings/SUser';
 import { Effect, Subscription } from "dva";
-import userService from '../services/UserService';
-import serverConfig from '@/config/config';
+import userService from '@/services/UserService';
+// import serverConfig from '@/config/config';
 // import { routerRedux } from "dva";
-import GeneralUtil from '@/utils/GeneralUtil';
+import GeneralUtil from '@/typings/util/GeneralUtils';
 
 export interface IUserState {
     user: SUser;
@@ -103,8 +103,10 @@ const UserModel: IUserModelType = {
 
         *logout({ payload }, { call, put }) {
             let res = yield call(userService.logout);
-            console.log(res)
+            message.success(res.message)
+            /** 移除浏览器缓存的token */
             GeneralUtil.removeToken();
+            /** 重定向到登录页面 */
             GeneralUtil.redirectLogin();
         },
 
@@ -115,6 +117,7 @@ const UserModel: IUserModelType = {
                 return;
             }
             let res = yield call(userService.checkToken)
+            /** 验证token成功后，设置user */
             yield put({
                 type: "saveUser",
                 payload: res.data
@@ -128,24 +131,25 @@ const UserModel: IUserModelType = {
             yield put({ type: 'checkToken' })
             /** 对单点登录成功后的回调地址进行处理，截断token，只要url部分 */
             let url = window.location.href.split('?')[0];
-            console.log(url)
             /** html5新增的history api，作用就是浏览器地址栏变化，但是页面不重新载入 */
             window.history.pushState(null, "", url);
         },
 
         *getUser({ payload }, { call, put }) {
-
+            /*** 不写了，意义不大 */
         }
     },
 
     subscriptions: {
         setUp({ dispatch, history }) {
+            /** 全局路由监听 */
             history.listen(location => {
                 /** 登录和注册页面无需验证token */
                 if (location.pathname === '/login' || location.pathname === '/regist') {
                     return;
                 }
-                let loginMode = serverConfig.loginMode;
+                // let loginMode = serverConfig.loginMode; // config.js不放在public目录下的写法
+                let loginMode = window.server.loginMode; // config.js放在public目录下的写法
                 if ("local" === loginMode) {
                     dispatch({ type: 'checkToken' });
                 } else if ("sso" === loginMode) {

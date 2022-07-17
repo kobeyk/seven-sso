@@ -1,4 +1,4 @@
-import GeneralUtil from "../utils/GeneralUtil";
+import GeneralUtil from "./util/GeneralUtils";
 export default class SObejct {
     id?: number;
     name: string;

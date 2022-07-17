@@ -26,6 +26,7 @@ const IndexPage: FC<IProps> = ({
     return (
         <div className="index-page">
             <div>
+                <h1>应用系统AppId：{window.server.appId}</h1>
                 <h1>
                     <span>用户ID:{user.id}</span>
                 </h1>
