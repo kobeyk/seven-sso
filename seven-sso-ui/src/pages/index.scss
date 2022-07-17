@@ -1,0 +1,28 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.index-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        height: 200px;
+        width: 200px;
+        margin-top: 0 auto;
+
+        h1 {
+            color: red;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    }
+
+}

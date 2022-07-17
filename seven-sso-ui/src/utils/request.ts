@@ -27,10 +27,6 @@ apiService.interceptors.request.use(
         let token = localStorage.getItem("token");
         if (token) {
             config.headers!["token"] = token;
-        } else {
-            if (!window.location.href.includes("regist")) {
-                GeneralUtil.redirectLogin();
-            }
         }
         return config;
     },
@@ -69,8 +65,15 @@ apiService.interceptors.response.use(
 const axiosFn = {
 
     // get请求
-    commonOnGet: (url: string, params: any) => {
-        return apiService.get(url, { params });
+    commonOnGet: (url: string, params: any, token: string = "") => {
+        let config;
+        if (GeneralUtil.isEmpty(token)) {
+            config = { params }
+        } else {
+            /** 带token */
+            config = { headers: { "token": token }, params };
+        }
+        return apiService.get(url, config);
     },
 
     // post请求

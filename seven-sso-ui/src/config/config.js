@@ -1,4 +1,9 @@
 const serverConfig = {
+    /**
+     * 登录模式，local或sso
+     * local模型无appId，且local模式下无需配置ssoUrl
+     */
+    loginMode: "sso",
     // 单点登录（用户认证中心）服务地址
     ssoUrl: "http://localhost:8080/auth",
     // 客户端（应用系统）服务地址

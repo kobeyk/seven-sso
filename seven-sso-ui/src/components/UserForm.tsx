@@ -91,6 +91,7 @@ const UserForm: FC<IUserContentProps> = ({
           if (appId) {
             user.appId = Number(appId);
           }
+          /** 调用单点登录系统（用户统一认证中心服务）的用户登录接口 */
           dispatch({
             type: "user/login",
             payload: user.toData()
@@ -100,13 +101,11 @@ const UserForm: FC<IUserContentProps> = ({
       form
         .validateFields()
         .then((values: any) => {
-          userService.regist(values)
-            .then((res: any) => {
-              if (res.status === 200) {
-                message.success("注册成功！");
-                history.push("/login");
-              }
-            })
+          /** 调用单点登录系统（用户统一认证中心服务）的用户注册接口 */
+          dispatch({
+            type: "user/register",
+            payload: values
+          })
         })
         .catch((error: any) => {
           return Promise.reject(error);
@@ -196,13 +195,13 @@ const UserForm: FC<IUserContentProps> = ({
           initialValues={{ remember: true }}
           onFinish={onFinish}
         >
-          <Form.Item name="name" rules={nameValidRules} initialValue="appleyk">
+          <Form.Item name="name" rules={nameValidRules} initialValue="">
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder="请输入用户名"
             />
           </Form.Item>
-          <Form.Item name="password" rules={passwordValidRules} initialValue="123456a">
+          <Form.Item name="password" rules={passwordValidRules} initialValue="">
             <Input
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"

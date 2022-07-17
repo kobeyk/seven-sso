@@ -38,7 +38,6 @@ export default class GeneralUtil {
         if (token) {
             localStorage.setItem("token", token);
         }
-
     }
 
     static getToken = () => {

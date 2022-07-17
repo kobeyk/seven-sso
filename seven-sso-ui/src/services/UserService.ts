@@ -26,9 +26,9 @@ const userService = {
         })
     },
     /** 使用客户端的，目的是让客户端的服务端缓存token */
-    loginToken: () => {
+    loginToken: (token: string) => {
         return new Promise((resolve, reject) => {
-            axiosFn.commonOnGet(`${serverConfig.clientUrl}/auth/loginToken`, {}).then(res => {
+            axiosFn.commonOnGet(`${serverConfig.clientUrl}/auth/loginToken`, {}, token).then(res => {
                 resolve(res)
             })
         })

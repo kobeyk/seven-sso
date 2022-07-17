@@ -4,6 +4,7 @@ import { SLoginUser } from './../typings/SLoginUser';
 import { SUser } from '@/typings/SUser';
 import { Effect, Subscription } from "dva";
 import userService from '../services/UserService';
+import serverConfig from '@/config/config';
 // import { routerRedux } from "dva";
 import GeneralUtil from '@/utils/GeneralUtil';
 
@@ -17,7 +18,6 @@ export interface IUserState {
     token: string;
     /** 登录成功的应用前端路由回调地址，仅在client模式下有效 */
     callbackUrl: string;
-    bLogin: boolean;
 }
 export interface IActionType {
     type: string;
@@ -27,14 +27,15 @@ export interface IUserModelType {
     namespace: string;
     state: IUserState,
     reducers: {
-        saveSession: (state: IUserState, payload: IUserState) => IUserState;
-        saveUser: (state: IUserState, payload: SUser) => IUserState;
-        setLoginStatus: (state: IUserState, payload: boolean) => IUserState;
+        saveSession: (state: IUserState, { payload }: { payload: IUserState }) => IUserState;
+        saveUser: (state: IUserState, { payload }: { payload: SUser }) => IUserState;
+        setLoginStatus: (state: IUserState, { payload }: { payload: boolean }) => IUserState;
     },
     effects: {
         login: ({ payload }: { payload: SLoginUser },
             { call, put }: { call: Function, put: Function }) => void;
-        register: Effect;
+        register: ({ payload }: { payload: ISRegister },
+            { call, put }: { call: Function, put: Function }) => void;
         getUser: Effect;
         logout: Effect;
         checkToken: Effect,
@@ -51,10 +52,9 @@ const UserModel: IUserModelType = {
         appId: 0,
         token: "",
         callbackUrl: "",
-        bLogin: false,
     },
     reducers: {
-        saveSession(state, payload) {
+        saveSession(state, { payload }) {
             return {
                 ...state,
                 user: payload.user,
@@ -63,13 +63,13 @@ const UserModel: IUserModelType = {
                 callbackUrl: payload.callbackUrl
             }
         },
-        saveUser(state, payload) {
+        saveUser(state, { payload }) {
             return {
                 ...state,
                 user: payload as SUser
             }
         },
-        setLoginStatus(state, payload) {
+        setLoginStatus(state, { payload }) {
             return {
                 ...state,
                 bLogin: payload as boolean
@@ -94,44 +94,72 @@ const UserModel: IUserModelType = {
             /** 第二种方式：使用routerRedux跳转 */
             // yield put(routerRedux.push("/"));
         },
+
         *register({ payload }, { call, put }) {
-
+            const res = yield call(userService.regist, payload);
+            message.success(res.message);
+            GeneralUtil.redirectLogin();
         },
+
         *logout({ payload }, { call, put }) {
-
+            let res = yield call(userService.logout);
+            console.log(res)
+            GeneralUtil.removeToken();
+            GeneralUtil.redirectLogin();
         },
-        *checkToken({ payload }, { call, put, select }) {
-            let bLogin = yield select((state: IUserState) => state.bLogin);
-            if (!bLogin) {
-                return;
-            }
+
+        *checkToken({ payload }, { call, put }) {
             if (!GeneralUtil.hasToken()) {
                 message.error("用户令牌缺失，请前往登录！")
                 GeneralUtil.redirectLogin();
                 return;
             }
             let res = yield call(userService.checkToken)
-            if (res && res.status === 200) {
-                yield put({
-                    type: "setUser",
-                    payload: res.user
-                })
-            }
+            yield put({
+                type: "saveUser",
+                payload: res.data
+            })
         },
+
         *loginToken({ payload }, { call, put }) {
-            yield call(userService.loginToken)
+            yield call(userService.loginToken, payload)
+            GeneralUtil.setToken(payload)
+            /** 同时验证下token */
+            yield put({ type: 'checkToken' })
+            /** 对单点登录成功后的回调地址进行处理，截断token，只要url部分 */
+            let url = window.location.href.split('?')[0];
+            console.log(url)
+            /** html5新增的history api，作用就是浏览器地址栏变化，但是页面不重新载入 */
+            window.history.pushState(null, "", url);
         },
+
         *getUser({ payload }, { call, put }) {
 
         }
     },
+
     subscriptions: {
         setUp({ dispatch, history }) {
             history.listen(location => {
+                /** 登录和注册页面无需验证token */
                 if (location.pathname === '/login' || location.pathname === '/regist') {
                     return;
                 }
-                dispatch({ type: 'checkToken' });
+                let loginMode = serverConfig.loginMode;
+                if ("local" === loginMode) {
+                    dispatch({ type: 'checkToken' });
+                } else if ("sso" === loginMode) {
+                    let search = location.search;
+                    if (search.length > 0) {
+                        let token = GeneralUtil.getSearchParamValue(location.search, "token");
+                        /** 如果是sso登录模式的话，login成功后拿到token要先调业务系统的loginToken进行缓存 */
+                        if (token) {
+                            dispatch({ type: 'loginToken', payload: token });
+                        }
+                    } else {
+                        dispatch({ type: 'checkToken' });
+                    }
+                }
             })
         }
     }

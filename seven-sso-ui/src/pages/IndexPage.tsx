@@ -1,55 +1,52 @@
-import { Button } from 'antd'
 import React, { FC, ReactElement } from 'react'
-import serverConfig from "../config/config";
 import { useEffect } from 'react';
-import userService from '@services/UserService';
 import { connect, Dispatch } from "dva";
 import { IUserState } from '../models/UserModel';
 import { SUser } from '@/typings/SUser';
-import GeneralUtil from '@/utils/GeneralUtil';
-
+import "./index.scss";
+import { Button } from 'antd';
 
 interface IProps {
     user: SUser,
-    bLogin: boolean,
-    history: any,
     dispatch: Dispatch
 }
 const IndexPage: FC<IProps> = ({
-    user, bLogin, history, dispatch
+    user, dispatch
 }): ReactElement => {
-    useEffect(() => {
-        let token = GeneralUtil.getSearchParamValue(history.location.search, "token");
-        GeneralUtil.setToken(token);
-        console.log(22, bLogin);
-        if (!bLogin) {
-            /** 调用loginToken */
-            userService.loginToken().then((res: any) => {
-                if (res) {
-                    dispatch({
-                        type: "user/setLoginStatus",
-                        payload: true
-                    })
-                }
-            })
-        }
 
+    useEffect(() => {
     }, [])
-    const toLogin = () => {
-        history.push(`/login?appId=${serverConfig.appId}`)
+
+    const logout = () => {
+        dispatch({
+            type: "user/logout"
+        });
     }
+
     return (
         <div className="index-page">
-            IndexPage
-            <Button onClick={toLogin} type="primary">跳转</Button>
+            <div>
+                <h1>
+                    <span>用户ID:{user.id}</span>
+                </h1>
+                <h1>
+                    <span>用户名：{user.name}</span>
+                </h1>
+                <h1>
+                    <span>昵称：{user.alias}</span>
+                </h1>
+                <hr />
+                <Button type="primary" onClick={logout}>退出登录</Button>
+            </div>
+
         </div>
     )
+
 }
 const mapState2Props = (state: any) => {
     const { user }: { user: IUserState } = state;
     return {
         user: user.user,
-        bLogin: user.bLogin
     }
 }
 export default connect(mapState2Props)(IndexPage)
