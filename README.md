@@ -40,13 +40,10 @@
 ![Seven-SSO模块图](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/1.modules.png)
 
 #### 项目核心业务模块设计
-- EA文件位置：src/main/resources/static/ea/seven-sso.eapx
 
 ![Seven-SSO模块图](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/3.design.png)
 
-
 #### 项目接口文档
--接口文档位置：src/main/resources/static/api
 
 ![Seven-SSO接口文档](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/2.apidoc.jpg)
 
