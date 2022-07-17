@@ -3,7 +3,7 @@ package com.appleyk.auth.core.service;
 import com.appleyk.auth.common.core.SePage;
 import com.appleyk.auth.common.core.filter.SeFilter;
 import com.appleyk.auth.common.excep.SeException;
-import com.appleyk.auth.core.model.SeAuthUser;
+import com.appleyk.auth.core.controller.model.SeAuthUser;
 
 /**
  * <p>认证用户接口定义，定义一些用户增删改查相关的方法</p>

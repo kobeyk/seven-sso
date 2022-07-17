@@ -1,7 +1,7 @@
-package com.appleyk.auth.core.model;
+package com.appleyk.auth.core.controller.model;
 
-import com.appleyk.auth.core.model.base.SeCheckStatus;
-import com.appleyk.auth.core.model.base.SeObject;
+import com.appleyk.auth.core.controller.model.base.SeCheckStatus;
+import com.appleyk.auth.core.controller.model.base.SeObject;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

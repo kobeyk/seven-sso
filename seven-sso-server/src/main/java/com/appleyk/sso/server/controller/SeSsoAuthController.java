@@ -5,10 +5,10 @@ import com.appleyk.auth.common.excep.SeException;
 import com.appleyk.auth.common.util.SeGeneralUtils;
 import com.appleyk.auth.core.container.SeAppSiteContainer;
 import com.appleyk.auth.core.controller.SeAuthBaseController;
-import com.appleyk.auth.core.model.SeAppSite;
-import com.appleyk.auth.core.model.SeAuthUser;
-import com.appleyk.auth.core.model.SeLoginUser;
-import com.appleyk.auth.core.model.SeRegister;
+import com.appleyk.auth.core.controller.model.SeAppSite;
+import com.appleyk.auth.core.controller.model.SeAuthUser;
+import com.appleyk.auth.core.controller.model.SeLoginUser;
+import com.appleyk.auth.core.controller.model.SeRegister;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;

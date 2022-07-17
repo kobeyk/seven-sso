@@ -4,7 +4,7 @@ import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.core.config.SeSsoProperties;
 import com.appleyk.auth.core.container.SeAppSiteContainer;
 import com.appleyk.auth.core.helper.SeXmlParseHelper;
-import com.appleyk.auth.core.model.SeAppSite;
+import com.appleyk.auth.core.controller.model.SeAppSite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

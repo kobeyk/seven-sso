@@ -14,7 +14,7 @@ import com.appleyk.auth.common.util.SeMD5Encrypt;
 import com.appleyk.auth.core.config.SeDynamicTableConfig;
 import com.appleyk.auth.core.dao.entity.SeUserEntity;
 import com.appleyk.auth.core.dao.mapper.SeUserMapper;
-import com.appleyk.auth.core.model.SeAuthUser;
+import com.appleyk.auth.core.controller.model.SeAuthUser;
 import com.appleyk.auth.core.service.ISeAuthUser;
 import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;

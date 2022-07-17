@@ -7,9 +7,9 @@ import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.common.util.SeGeneralUtils;
 import com.appleyk.auth.core.container.SeAppSiteContainer;
 import com.appleyk.auth.core.helper.SeTokenHelper;
-import com.appleyk.auth.core.model.SeAppSite;
-import com.appleyk.auth.core.model.SeAuthUser;
-import com.appleyk.auth.core.model.session.SeSsoInfo;
+import com.appleyk.auth.core.controller.model.SeAppSite;
+import com.appleyk.auth.core.controller.model.SeAuthUser;
+import com.appleyk.auth.core.controller.model.session.SeSsoInfo;
 import com.appleyk.auth.core.service.impl.ASeAuthManager;
 import org.springframework.stereotype.Service;
 

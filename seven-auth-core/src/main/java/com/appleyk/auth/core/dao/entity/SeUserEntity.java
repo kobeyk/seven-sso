@@ -5,8 +5,8 @@ import com.appleyk.auth.common.util.SeGeneralUtils;
 import com.appleyk.auth.common.util.SeJsonUtils;
 import com.appleyk.auth.common.util.SeMD5Encrypt;
 import com.appleyk.auth.core.config.SeDynamicTableConfig;
-import com.appleyk.auth.core.model.SeAuthUser;
-import com.appleyk.auth.core.model.base.SeCheckStatus;
+import com.appleyk.auth.core.controller.model.SeAuthUser;
+import com.appleyk.auth.core.controller.model.base.SeCheckStatus;
 import lombok.Data;
 import tk.mybatis.mapper.entity.IDynamicTableName;
 

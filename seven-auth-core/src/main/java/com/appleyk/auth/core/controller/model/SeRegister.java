@@ -1,7 +1,6 @@
-package com.appleyk.auth.core.model;
+package com.appleyk.auth.core.controller.model;
 
 import com.appleyk.auth.core.dict.ESeCodeType;
-import lombok.Builder;
 import lombok.Data;
 
 /**

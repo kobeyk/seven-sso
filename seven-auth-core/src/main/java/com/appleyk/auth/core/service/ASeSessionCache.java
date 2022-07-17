@@ -6,7 +6,7 @@ import com.appleyk.auth.common.excep.SeException;
 import com.appleyk.auth.common.util.SeGeneralUtils;
 import com.appleyk.auth.core.container.SeSessionCacheBeanContainer;
 import com.appleyk.auth.core.helper.SeTokenHelper;
-import com.appleyk.auth.core.model.session.SeSsoInfo;
+import com.appleyk.auth.core.controller.model.session.SeSsoInfo;
 
 import java.util.Date;
 

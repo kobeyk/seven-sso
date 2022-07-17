@@ -4,7 +4,7 @@ import com.appleyk.auth.common.excep.SeException;
 import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.core.config.SeSsoProperties;
 import com.appleyk.auth.core.dict.SeCacheBeanNameConsts;
-import com.appleyk.auth.core.model.session.SeSsoInfo;
+import com.appleyk.auth.core.controller.model.session.SeSsoInfo;
 import com.appleyk.auth.core.service.ASeSessionCache;
 import net.jodah.expiringmap.ExpirationPolicy;
 import net.jodah.expiringmap.ExpiringMap;

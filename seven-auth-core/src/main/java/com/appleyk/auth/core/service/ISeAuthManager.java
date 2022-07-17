@@ -1,8 +1,8 @@
 package com.appleyk.auth.core.service;
 
 import com.appleyk.auth.common.excep.SeException;
-import com.appleyk.auth.core.model.SeAuthUser;
-import com.appleyk.auth.core.model.session.SeSsoInfo;
+import com.appleyk.auth.core.controller.model.SeAuthUser;
+import com.appleyk.auth.core.controller.model.session.SeSsoInfo;
 
 import java.util.Map;
 

@@ -1,6 +1,5 @@
-package com.appleyk.auth.core.model;
+package com.appleyk.auth.core.controller.model;
 
-import lombok.Builder;
 import lombok.Data;
 
 /**
