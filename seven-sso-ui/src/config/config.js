@@ -9,6 +9,6 @@ const serverConfig = {
     // 客户端（应用系统）服务地址
     clientUrl: "http://localhost:8081",
     // 客户端在服务端的授权应用ID，该ID唯一，一个ID对应一个应用系统
-    appId: 123456,
+    appId: 123456, // 123456是单独运行前端项目调试用的appId,456321是admin发布后的appId
 }
 export default serverConfig;

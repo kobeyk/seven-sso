@@ -75,7 +75,7 @@
                             <!--将ui模块构建的静态资源文件拷贝到当前模块的资源目录下的sso目录中-->
                             <resources>
                                 <resource>
-                                    <directory>${project.parent.basedir}/seven-sso-ui/dist</directory>
+                                    <directory>${project.parent.basedir}/seven-sso-ui/build</directory>
                                 </resource>
                             </resources>
                             <!--输出目录-->
