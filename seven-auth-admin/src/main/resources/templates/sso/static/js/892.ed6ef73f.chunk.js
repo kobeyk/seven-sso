@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkseven_sso_ui=self.webpackChunkseven_sso_ui||[]).push([[892],{6953:function(n,s,c){c.r(s),c.d(s,{default:function(){return i}});c(2791);var e=c.p+"static/media/404.cccaf45c205ba2a0039d.png",u=c(184),i=function(n){var s=n.history;return(0,u.jsx)("div",{className:"not-found",children:(0,u.jsx)("img",{onClick:function(){s.push("/")},src:e,alt:"404"})})}}}]);
+//# sourceMappingURL=892.ed6ef73f.chunk.js.map

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.appleyk.auth.core.dao.mapper.SeUserMapper">
+
+    <resultMap id="AllColumnMap" type="com.appleyk.auth.core.dao.entity.SeUserEntity">
+        <result column="uid" property="uid"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="alias" property="alias"/>
+        <result column="avatar" property="avatar"/>
+        <result column="info" property="info"/>
+        <result column="status" property="status"/>
+        <result column="ctime" property="cTime"/>
+        <result column="utime" property="uTime"/>
+    </resultMap>
+
+    <sql id="all_column">
+        uid,
+        name,
+        password,
+        alias,
+        avatar,
+        info,
+        status,
+        ctime,
+        utime
+    </sql>
+
+    <update id="updateUserByUserName" parameterType="com.appleyk.auth.core.dao.entity.SeUserEntity">
+        update ${tableName}
+        <set>
+            <if test="userEntity.name != null and userEntity.name != ''">name = #{userEntity.name},</if>
+            <if test="userEntity.password != null and userEntity.password != ''">password = #{userEntity.password},</if>
+            <if test="userEntity.info != null and userEntity.info != ''">info = #{userEntity.info},</if>
+            <if test="userEntity.alias != null and userEntity.alias != ''">alias = #{userEntity.alias},</if>
+            <if test="userEntity.avatar != null and userEntity.avatar != ''">avatar = #{userEntity.avatar},</if>
+            <if test="userEntity.status != null and userEntity.status != ''">status = #{userEntity.status},</if>
+        </set>
+        where uid = #{userEntity.uid}
+    </update>
+    <update id="updateUserName">
+        update ${tableName} set name = #{newName} where name = #{oldName}
+    </update>
+
+    <select id="findUserByName" resultMap="AllColumnMap" statementType="PREPARED">
+        select
+         <include refid="all_column"/>
+        from ${tableName} where name = #{username}
+    </select>
+
+    <select id="findUserByUid" resultMap="AllColumnMap" statementType="PREPARED">
+        select
+        <include refid="all_column"/>
+        from ${tableName} where uid = #{id}
+    </select>
+
+    <select id="countUsers" resultType="java.lang.Long">
+        select count(1)
+        from ${tableName}
+    </select>
+
+    <select id="findAll" resultMap="AllColumnMap" statementType="PREPARED">
+        select
+        <include refid="all_column"/>
+        from ${tableName}
+    </select>
+</mapper>

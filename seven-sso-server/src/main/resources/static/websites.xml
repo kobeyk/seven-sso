@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webSites>
+    <webSite id="123456"
+             serviceUrl="http://localhost:8001/"
+             callbackUrl="http://localhost:3020/#/"
+             createTime="2022-04-30 23:300:00"
+             updateTime="2022-07-17 14:00:00">
+    </webSite>
+    <webSite id="456321"
+             serviceUrl="http://localhost:8001/"
+             callbackUrl="http://localhost:8866/#/"
+             createTime="2022-04-30 23:300:00"
+             updateTime="2022-07-17 14:30:00">
+    </webSite>
+</webSites>

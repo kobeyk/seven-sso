@@ -1,0 +1,11 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/**解决Chrome浏览器表单input自动填充值带来的背景样式污染问题*/
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected {
+    transition: background-color 5000s ease-in-out 0s !important;
+}

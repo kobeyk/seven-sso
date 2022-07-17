@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.appleyk</groupId>
+    <artifactId>seven-sso</artifactId>
+    <version>0.1.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <!-- 通用模块,如异常定义、响应结果封装、id生成器等-->
+        <module>seven-auth-common</module>
+        <!--核心认证模块-->
+        <module>seven-auth-core</module>
+        <!--单机版模块（全套）-->
+        <module>seven-sso-local</module>
+        <!--客户端模块（应用App需引入）-->
+        <module>seven-sso-client</module>
+        <!--服务端模块（提供统一认证服务）-->
+        <module>seven-sso-server</module>
+        <!--测试模块（分为local版和client版）-->
+        <module>seven-app-test</module>
+        <!-- 控制台（前端项目） -->
+        <module>seven-auth-admin</module>
+        <!-- React前端模块（前后端分离） -->
+        <module>seven-sso-ui</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <!--boot版本官方更新的较频繁，这里仅取个看着顺眼的版本也不老的，有追高需求的可以替换-->
+        <version>2.2.2.RELEASE</version>
+    </parent>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <jdk.version>1.8</jdk.version>
+        <!--整个项目的版本号，也包括模块的都统一起来-->
+        <project.version>0.1.1-SNAPSHOT</project.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <!-- 单元测试 -->
+        <junit.version>4.13.2</junit.version>
+        <springboot.version>2.2.2.RELEASE</springboot.version>
+        <!-- Json正反序列化-->
+        <jackson.version>2.13.1</jackson.version>
+        <!--PageHelper Spring Boot Starter-->
+        <pagehelper.version>1.2.10</pagehelper.version>
+        <!--Mybatis 通用 Mapper Jar 集成-->
+        <tk.mybatis.version>2.1.5</tk.mybatis.version>
+        <!--Java JDBC 4.2 (JRE 8+) driver for postgresQL database-->
+        <postgresql.version>42.2.5</postgresql.version>
+        <!--Java implementation of JSON Web Token (JWT)-->
+        <java.jwt.version>3.8.0</java.jwt.version>
+        <!--Apache Commons Lang, a package of Java utility classes for the classes that are in java.lang's hierarchy,
+        or are considered to be so standard as to justify existence in java.lang.-->
+        <commons.lang3.version>3.8.1</commons.lang3.version>
+        <!-- redis 客户端连接工具-->
+        <redis.client.version>4.1.0</redis.client.version>
+        <!-- 基于内存的带过期时间的高性能多线性安全的Map -->
+        <expiringmap.version>0.5.9</expiringmap.version>
+        <!-- OpenFeign 全称 Spring Cloud OpenFeign，它是 Spring 官方推出的一种声明式服务调用与负载均衡组件，它的出现就是为了替代进入停更维护状态的 Feign -->
+        <springcloud.openfeign.version>2.2.2.RELEASE</springcloud.openfeign.version>
+    </properties>
+
+    <!--统一POM依赖管理-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${java.jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+            <!-- pageHelper -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${tk.mybatis.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/net.jodah/expiringmap -->
+            <dependency>
+                <groupId>net.jodah</groupId>
+                <artifactId>expiringmap</artifactId>
+                <version>${expiringmap.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${springcloud.openfeign.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

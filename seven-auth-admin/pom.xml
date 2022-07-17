@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>seven-sso</artifactId>
+        <groupId>com.appleyk</groupId>
+        <version>0.1.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>seven-auth-admin</artifactId>
+    <description>启动前端项目的</description>
+    <dependencies>
+        <!-- Spring Boot相关依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Spring Boot相关依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.name}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.2.RELEASE</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!--Maven资源清理插件-->
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <!--清理项目构建时产生的资源文件-->
+                    <filesets>
+                        <fileset>
+                            <!--要清理的目录位置-->
+                            <directory>src/main/resources/templates</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!--Maven资源构建插件-->
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy React.js frontend content</id>
+                        <!--执行阶段，处于Maven的:生成所有需要包含在打包过程中的资源文件的时候,触发-->
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <!--目标,就是拷贝资源文件-->
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <!--将ui模块构建的静态资源文件拷贝到当前模块的资源目录下的sso目录中-->
+                            <resources>
+                                <resource>
+                                    <directory>${project.parent.basedir}/seven-sso-ui/build</directory>
+                                </resource>
+                            </resources>
+                            <!--输出目录-->
+                            <outputDirectory>src/main/resources/templates/sso</outputDirectory>
+                            <!--如果存在,就覆盖-->
+                            <overwrite>true</overwrite>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
