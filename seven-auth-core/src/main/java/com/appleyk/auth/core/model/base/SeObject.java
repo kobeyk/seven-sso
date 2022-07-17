@@ -1,4 +1,4 @@
-package com.appleyk.auth.core.controller.model.base;
+package com.appleyk.auth.core.model.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

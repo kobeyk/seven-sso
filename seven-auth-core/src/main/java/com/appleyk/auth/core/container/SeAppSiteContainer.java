@@ -1,5 +1,5 @@
 package com.appleyk.auth.core.container;
-import com.appleyk.auth.core.controller.model.SeAppSite;
+import com.appleyk.auth.core.model.SeAppSite;
 import java.util.HashMap;
 import java.util.Map;
 public class SeAppSiteContainer {

@@ -1,4 +1,4 @@
-package com.appleyk.auth.core.controller.model;
+package com.appleyk.auth.core.model;
 
 import com.appleyk.auth.core.dict.ESeCodeType;
 import lombok.Data;

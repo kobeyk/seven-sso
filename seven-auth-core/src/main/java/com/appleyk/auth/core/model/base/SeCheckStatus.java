@@ -1,4 +1,4 @@
-package com.appleyk.auth.core.controller.model.base;
+package com.appleyk.auth.core.model.base;
 
 /**
  * <p>对象审状态</p>

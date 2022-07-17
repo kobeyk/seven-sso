@@ -2,7 +2,7 @@ package com.appleyk.auth.core.helper;
 
 import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.common.util.SeDateUtils;
-import com.appleyk.auth.core.controller.model.SeAppSite;
+import com.appleyk.auth.core.model.SeAppSite;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;

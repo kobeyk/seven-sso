@@ -4,7 +4,7 @@ import com.appleyk.auth.common.core.ESeResponseCode;
 import com.appleyk.auth.common.core.SeResult;
 import com.appleyk.auth.common.excep.SeException;
 import com.appleyk.auth.common.helper.SeLoggerHelper;
-import com.appleyk.auth.core.controller.model.SeAuthUser;
+import com.appleyk.auth.core.model.SeAuthUser;
 import org.springframework.stereotype.Component;
 
 /**

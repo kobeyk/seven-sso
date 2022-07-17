@@ -1,6 +1,6 @@
-package com.appleyk.auth.core.controller.model.session;
+package com.appleyk.auth.core.model.session;
 
-import com.appleyk.auth.core.controller.model.SeAuthUser;
+import com.appleyk.auth.core.model.SeAuthUser;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

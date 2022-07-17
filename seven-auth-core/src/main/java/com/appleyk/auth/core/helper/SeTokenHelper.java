@@ -1,8 +1,8 @@
 package com.appleyk.auth.core.helper;
 import com.appleyk.auth.common.helper.SeLoggerHelper;
 import com.appleyk.auth.common.util.SeGeneralUtils;
-import com.appleyk.auth.core.controller.model.SeAuthUser;
-import com.appleyk.auth.core.controller.model.session.SeSsoInfo;
+import com.appleyk.auth.core.model.SeAuthUser;
+import com.appleyk.auth.core.model.session.SeSsoInfo;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;

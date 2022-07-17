@@ -2,8 +2,8 @@ package com.appleyk.auth.client.controller;
 
 import com.appleyk.auth.common.core.SeResult;
 import com.appleyk.auth.common.excep.SeException;
-import com.appleyk.auth.core.controller.model.SeAuthUser;
-import com.appleyk.auth.core.controller.model.session.SeSsoInfo;
+import com.appleyk.auth.core.model.SeAuthUser;
+import com.appleyk.auth.core.model.session.SeSsoInfo;
 import com.appleyk.auth.core.service.impl.ASeAuthManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

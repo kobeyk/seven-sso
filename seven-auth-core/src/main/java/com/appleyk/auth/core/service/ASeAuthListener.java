@@ -1,7 +1,7 @@
 package com.appleyk.auth.core.service;
 
 import com.appleyk.auth.core.container.SeAuthListenerBeanContainer;
-import com.appleyk.auth.core.controller.model.SeAuthUser;
+import com.appleyk.auth.core.model.SeAuthUser;
 
 /**
  * <p>抽象用户认证监听器（主要定义回调方法，让子应用系统选择性的去重写）</p>

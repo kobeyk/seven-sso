@@ -1,7 +1,7 @@
 package com.appleyk.auth.core.service;
 
 import com.appleyk.auth.common.excep.SeException;
-import com.appleyk.auth.core.controller.model.session.SeSsoInfo;
+import com.appleyk.auth.core.model.session.SeSsoInfo;
 
 /**
  * <p>用户会话缓存接口（实现方式有多种，内存 or redis）</p>
