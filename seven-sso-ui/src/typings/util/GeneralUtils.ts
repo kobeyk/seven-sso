@@ -1,5 +1,3 @@
-import serverConfig from "@/config/config";
-
 export default class GeneralUtil {
     static isEmpty = (obj: any): boolean => {
         if (typeof obj === 'undefined' || obj === null) {
@@ -30,7 +28,7 @@ export default class GeneralUtil {
     static redirectLogin = () => {
         setTimeout(() => {
             window.location.href =
-                window.location.origin + window.location.pathname + `#/login?appId=${serverConfig.appId}`;
+                window.location.origin + window.location.pathname + `#/login?appId=${window.server.appId}`;
         }, 300);
     };
 
