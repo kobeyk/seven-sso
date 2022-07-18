@@ -41,7 +41,15 @@
 
 #### 项目核心业务模块设计
 
-![Seven-SSO模块图](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/3.design.png)
+![Seven-SSO设计](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/3.design.png)
+
+#### 单点登录流程时序图
+
+##### Client模块
+![Seven-SSOClient](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/sequence/1.client·module.png)
+
+##### Local模块
+![Seven-SSOLocal](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/sequence/2.local·module.png)
 
 #### 项目接口文档
 
