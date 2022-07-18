@@ -15,6 +15,8 @@
     时序图有时间了，我随后就补上，总之就是，看懂了时序图，代码就没什么难度了，整个项目所有的资源文件全部在根目录
 下的src/main下的resources下，包括接口文档源文件（可二次修改，基于apidoc自动生成）、数据库脚本、ea建模设计文件、
 效果图及后续的时序图（分client和local两个模块）等。
+    
+    2022年7月18日13:07:00，时序图已补充。
 ```
 
 #### 项目技术栈
@@ -45,6 +47,14 @@
 #### 项目核心业务模块设计
 
 ![Seven-SSO模块图](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/3.design.png)
+
+#### 单点登录流程时序图
+
+##### Client模块
+![Seven-SSOClient](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/sequence/1.client·module.png)
+
+##### Local模块
+![Seven-SSOLocal](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/sequence/2.local·module.png)
 
 #### 项目接口文档
 
