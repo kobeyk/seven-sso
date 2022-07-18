@@ -51,11 +51,13 @@
 #### 单点登录流程时序图
 
 ##### Client模块
-原图地址：https://www.processon.com/view/link/62d4e7671efad4037a117c03
+原图地址：https://www.processon.com/view/link/62d4e7671efad4037a117c03  
+
 ![Seven-SSOClient](https://gitee.com/appleyk/seven-sso/raw/v1.0/src/main/resources/static/sequence/1.client%C2%B7module.png)
 
 ##### Local模块
-原图地址：https://www.processon.com/view/link/62d4e7970e3e74607275dfc7
+原图地址：https://www.processon.com/view/link/62d4e7970e3e74607275dfc7  
+
 ![Seven-SSOLocal](https://gitee.com/appleyk/seven-sso/raw/v1.0/src/main/resources/static/sequence/2.local%C2%B7module.png)
 
 #### 项目接口文档
