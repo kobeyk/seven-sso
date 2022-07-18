@@ -13,5 +13,5 @@ window.server = {
      * 123456是单独运行前端项目调试用的appId,456321是admin发布后的appId
      * 其他AppId可在seven-sso-server模块下资源目录下的websites.xml中新增
      */
-    appId: 123456,
+    appId: 456321,
 }
