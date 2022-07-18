@@ -12,13 +12,18 @@
 了使用者引入相应模块需要做过多bean扫描配置的时间。同时，项目配套的文档齐全：如项目模块图、项目软件设计、项目单点
 登录流程（序列）图、项目接口文档、项目配套前端测试站点等。
 
+    时序图有时间了，我随后就补上，总之就是，看懂了时序图，代码就没什么难度了，整个项目所有的资源文件全部在根目录
+下的src/main下的resources下，包括接口文档源文件（可二次修改，基于apidoc自动生成）、数据库脚本、ea建模设计文件、
+效果图及后续的时序图（分client和local两个模块）等。
+    
+    2022年7月18日13:07:00，时序图已补充。
 ```
 
 #### 项目技术栈
 
 ##### 后端
-- SpringBoot 2.2.2.RELEASE 
-- Mybatis 3.4.6 
+- SpringBoot 2.2.2.RELEASE
+- Mybatis 3.4.6
 - Tk.Mybatis.SpringBoot 2.1.5
 - PageHelper.SpringBoot 1.2.10
 - Jedis 3.1.0
@@ -29,7 +34,7 @@
 ##### 前端
 - React 17.0.2
 - DvaJs 2.6.0-beta.22
-- React-Router-Dom v5 (dva模块中自带) 
+- React-Router-Dom v5 (dva模块中自带)
 - AntD 4.21.0
 - Axios 0.27.2
 - TypeScript 4.4.2
@@ -41,15 +46,17 @@
 
 #### 项目核心业务模块设计
 
-![Seven-SSO设计](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/3.design.png)
+![Seven-SSO模块图](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/images/3.design.png)
 
 #### 单点登录流程时序图
 
 ##### Client模块
-![Seven-SSOClient](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/sequence/1.client·module.png)
+原图地址：https://www.processon.com/view/link/62d4e7671efad4037a117c03
+![Seven-SSOClient](https://gitee.com/appleyk/seven-sso/raw/v1.0/src/main/resources/static/sequence/1.client%C2%B7module.png)
 
 ##### Local模块
-![Seven-SSOLocal](https://gitee.com/appleyk/seven-sso/raw/master/src/main/resources/static/sequence/2.local·module.png)
+原图地址：https://www.processon.com/view/link/62d4e7970e3e74607275dfc7
+![Seven-SSOLocal](https://gitee.com/appleyk/seven-sso/raw/v1.0/src/main/resources/static/sequence/2.local%C2%B7module.png)
 
 #### 项目接口文档
 
@@ -57,7 +64,7 @@
 
 #### 安装教程
 
-1.  git clone xxxxx 
+1.  git clone xxxxx
 2.  mvn clean package -DskipTests=true
 3.  分别启动seven-sso-server、seven-auth-client和seven-auth-admin模块服务
 
