@@ -21,7 +21,7 @@ import java.util.Map;
  * <p>Web应用站点配置监测定时器</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/26-16:16

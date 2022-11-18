@@ -5,6 +5,7 @@ import { IUserState } from '../models/UserModel';
 import { SUser } from '@/typings/SUser';
 import "./index.scss";
 import { Button } from 'antd';
+import GeneralUtil from '@/typings/util/GeneralUtils';
 
 interface IProps {
     user: SUser,
@@ -26,7 +27,12 @@ const IndexPage: FC<IProps> = ({
     return (
         <div className="index-page">
             <div>
-                <h1>应用系统AppId：{window.server.appId}</h1>
+                {
+                    "sso" === GeneralUtil.getLoginMode()
+                        ?
+                        <h1>应用系统AppId：{window.server.appId}</h1>
+                        : <></>
+                }
                 <h1>
                     <span>用户ID:{user.id}</span>
                 </h1>

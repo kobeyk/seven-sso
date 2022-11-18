@@ -11,7 +11,7 @@ import java.io.*;
  * <p>图片base64转换工具</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/18-10:08

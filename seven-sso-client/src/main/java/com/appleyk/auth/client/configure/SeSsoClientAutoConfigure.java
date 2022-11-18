@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * <p>客户端模块bean自动装配配置类</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  下午9:49 2022/5/2

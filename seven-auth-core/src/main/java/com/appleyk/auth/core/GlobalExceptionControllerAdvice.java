@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * <p>全局Controller（接口）异常结果通知（拦截异常，返回统一状态和码值）</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/15-8:47

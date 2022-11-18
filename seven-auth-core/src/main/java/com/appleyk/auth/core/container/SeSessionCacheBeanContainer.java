@@ -13,7 +13,7 @@ import java.util.Map;
  * <p>服务端用户认证信息缓存bean容器</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  下午10:55 2022/3/26

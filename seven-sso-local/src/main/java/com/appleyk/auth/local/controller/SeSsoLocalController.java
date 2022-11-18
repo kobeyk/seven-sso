@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * <p>local模块接口控制器（接口功能几乎和sso服务端一模一样）</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  下午9:57 2022/5/2

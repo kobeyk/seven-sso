@@ -32,7 +32,7 @@ import java.util.List;
  * <p>用户认证业务实现层</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/25-15:20

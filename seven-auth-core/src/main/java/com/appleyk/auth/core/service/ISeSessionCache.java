@@ -7,7 +7,7 @@ import com.appleyk.auth.core.model.session.SeSsoInfo;
  * <p>用户会话缓存接口（实现方式有多种，内存 or redis）</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/23-15:13

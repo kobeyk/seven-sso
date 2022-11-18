@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * <p>客户端模块接口控制器</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  上午8:48 2022/5/2

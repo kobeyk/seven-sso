@@ -18,7 +18,7 @@ import java.util.*;
  * <p>单点登录用户认证中心接口（控制器）</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  上午9:42 2022/5/1

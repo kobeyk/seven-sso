@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
  * <p>客户端认证管理实现</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  上午10:03 2022/5/2

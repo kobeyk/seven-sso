@@ -10,7 +10,7 @@ import java.util.Map;
  * <p>用户认证管理接口</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/23-16:27

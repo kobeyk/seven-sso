@@ -14,7 +14,7 @@ import java.util.Date;
  * <p>抽象会话缓存类，统一实现token的check功能</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  下午10:59 2022/3/26

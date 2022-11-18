@@ -14,7 +14,7 @@ import java.util.Map;
  * <p>redis客户端连接实例容器,每种redis部署模式对应一个实现bean</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  下午11:05 2022/4/2

@@ -13,7 +13,7 @@ import java.io.*;
  * <p>抽象redis客户端对象操作</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  下午10:58 2022/4/2
