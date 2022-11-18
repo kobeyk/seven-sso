@@ -21,7 +21,7 @@ import java.util.Set;
  * <p>集群模式</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  下午10:43 2022/4/2

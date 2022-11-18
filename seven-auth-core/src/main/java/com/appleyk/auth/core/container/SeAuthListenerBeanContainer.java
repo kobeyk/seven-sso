@@ -9,7 +9,7 @@ import java.util.List;
  * <p>认证监听bean容器，收集应用系统中所有实现了认证监听器的实例bean</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/23-16:03

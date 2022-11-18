@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
  * <p>通用缓存配置</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  下午9:01 2022/4/30

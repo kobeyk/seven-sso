@@ -10,7 +10,7 @@ import java.util.Date;
  * <p>封装http响应结果对象</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/18-9:43

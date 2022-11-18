@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * <p>expiringMap（基于内存的一个Map）实现服务端用户session缓存</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  下午11:26 2022/3/26

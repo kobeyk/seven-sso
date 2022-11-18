@@ -20,7 +20,7 @@ import redis.clients.jedis.*;
  * <p>单机版模式（matchIfMissing等于true，表示就算使用方没有配置mode属性，这里也会默认注入这个bean）</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  下午10:27 2022/4/2

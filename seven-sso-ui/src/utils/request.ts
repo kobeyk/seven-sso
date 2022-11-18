@@ -4,7 +4,7 @@ import GeneralUtil from '@/typings/util/GeneralUtils';
 
 /** 创建axios实例 */
 const apiService = axios.create({
-    baseURL: window.server.ssoUrl,
+    baseURL: "sso" === GeneralUtil.getLoginMode() ? window.server.ssoUrl : window.server.clientUrl + "/auth",
     timeout: 30 * 1000,
     headers: {
         "Content-Type": "application/json",

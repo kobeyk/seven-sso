@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  * <p>sso服务端实现认证管理，主要实现登录和登出业务逻辑</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  上午11:39 2022/5/1

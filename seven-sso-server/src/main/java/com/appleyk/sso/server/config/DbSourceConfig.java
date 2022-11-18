@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * <p>数据源配置</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/26-16:16

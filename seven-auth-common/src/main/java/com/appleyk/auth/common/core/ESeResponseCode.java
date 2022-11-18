@@ -4,7 +4,7 @@ package com.appleyk.auth.common.core;
  * <p>Http响应码（正常 & 异常）</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/17-15:23

@@ -9,7 +9,7 @@ import com.appleyk.auth.core.model.SeAuthUser;
  * <p>认证用户接口定义，定义一些用户增删改查相关的方法</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/25-15:04

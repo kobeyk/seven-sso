@@ -27,10 +27,20 @@ export default class GeneralUtil {
 
     static redirectLogin = () => {
         setTimeout(() => {
-            window.location.href =
-                window.location.origin + window.location.pathname + `#/login?appId=${window.server.appId}`;
+            if ("local" === GeneralUtil.getLoginMode()) {
+                window.location.href =
+                    window.location.origin + window.location.pathname + `#/login`;
+            } else if ("sso" === GeneralUtil.getLoginMode()) {
+                window.location.href =
+                    window.location.origin + window.location.pathname + `#/login?appId=${window.server.appId}`;
+            }
+
         }, 300);
     };
+
+    static getLoginMode = (): string => {
+        return window.server.loginMode;
+    }
 
     static setToken = (token: string): void => {
         if (token) {

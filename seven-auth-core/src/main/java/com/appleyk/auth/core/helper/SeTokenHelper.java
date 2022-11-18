@@ -27,7 +27,7 @@ import java.util.Map;
  * 因此，一个典型的JWT看起来是这个样子的：aaaaaa.bbbbbb.ccccccc
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/23-9:40

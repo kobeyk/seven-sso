@@ -5,7 +5,7 @@ import { SUser } from '@/typings/SUser';
 import { Effect, Subscription } from "dva";
 import userService from '@/services/UserService';
 // import serverConfig from '@/config/config';
-// import { routerRedux } from "dva";
+import { routerRedux } from "dva";
 import GeneralUtil from '@/typings/util/GeneralUtils';
 
 export interface IUserState {
@@ -89,10 +89,14 @@ const UserModel: IUserModelType = {
                     callbackUrl: res.data.callbackUr
                 }
             })
-            /** 第一种方式：当前页面打开URL页面并将token带过去,即回调地址（等同于路由跳转）*/
-            window.location.href = res.data.callbackUrl + "?token=" + token;
-            /** 第二种方式：使用routerRedux跳转 */
-            // yield put(routerRedux.push("/"));
+            if (res.data.callbackUrl) {
+                /** 第一种方式：当前页面打开URL页面并将token带过去,即回调地址（等同于路由跳转）*/
+                window.location.href = res.data.callbackUrl + "?token=" + token;
+            } else {
+                GeneralUtil.setToken(res.data.localToken)
+                yield put(routerRedux.push("/"))
+            }
+
         },
 
         *register({ payload }, { call, put }) {

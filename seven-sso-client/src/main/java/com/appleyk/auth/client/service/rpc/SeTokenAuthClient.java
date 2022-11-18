@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * <p>openfeign 用户认证客户端接口配置</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on  上午10:15 2022/5/2

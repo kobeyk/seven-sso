@@ -6,7 +6,7 @@ import java.util.*;
  * <p>自定义的常用数据判断和类型转换工具类</p>
  *
  * @author appleyk
- * @version V.0.1.1
+ * @version v.1.0
  * @blob https://blog.csdn.net/appleyk
  * @github https://github.com/kobeyk
  * @date created on 2022/3/18-10:08
