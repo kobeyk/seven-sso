@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.appleyk</groupId>
     <artifactId>seven-sso</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -39,7 +39,7 @@
         <java.version>1.8</java.version>
         <jdk.version>1.8</jdk.version>
         <!--整个项目的版本号，也包括模块的都统一起来-->
-        <project.version>0.1.1-SNAPSHOT</project.version>
+        <project.version>1.0-SNAPSHOT</project.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <!-- 单元测试 -->

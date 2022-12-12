@@ -1,6 +1,8 @@
 package com.appleyk.auth.core.configure;
 
 import com.appleyk.auth.core.config.SeDynamicTableConfig;
+import com.appleyk.auth.core.config.SeWebMvcConfig;
+import com.appleyk.auth.core.helper.SeAuthHelper;
 import com.appleyk.auth.core.redis.SeRedisPoolConfig;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
@@ -21,6 +23,7 @@ public class ConfigSelector implements ImportSelector {
     @Override
     public String[] selectImports(AnnotationMetadata annotationMetadata) {
         return new String[]{SeDynamicTableConfig.class.getName(),
-                SeRedisPoolConfig.class.getName()};
+                SeRedisPoolConfig.class.getName(),SeAuthHelper.class.getName(),
+                SeWebMvcConfig.class.getName()};
     }
 }
