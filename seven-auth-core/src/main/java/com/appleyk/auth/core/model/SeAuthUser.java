@@ -47,6 +47,13 @@ public class SeAuthUser extends SeObject {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @JsonProperty("uTime")
     private Date uTime;
+
+    public SeAuthUser(Long id,String name){
+        super(id,name,null);
+        setId(id);
+        setName(name);
+    }
+
     public SeAuthUser(Long id,String name,String password){
         super(id,name, SeCheckStatus.PASSED);
         this.password = password;

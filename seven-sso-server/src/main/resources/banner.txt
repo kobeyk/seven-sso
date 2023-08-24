@@ -9,6 +9,6 @@
 
 
 SpringBoot Version ： ${spring-boot.version}
-项目名称   Seven-Sso 七仔单点登录 v0.1.1
+项目名称   Seven-Sso 七仔单点登录 v1.0
 研发个人   Appleyk
 构建时间   2022年03月27日 周日 17:10:00
