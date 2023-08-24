@@ -77,6 +77,19 @@
 6.  具体可以参考我的博文：https://blog.csdn.net/Appleyk/article/details/125838806
 7.  项目中引用jar
 
+本地maven对应的settings.xml配置镜像
+
+```xml
+<mirrors>
+		<mirror>
+			<id>github</id>
+			<mirrorOf>maven-repository-main</mirrorOf>
+			<name>kobeyk maven</name>
+			<url>https://raw.github.com/kobeyk/maven-repository/main/</url>
+		</mirror>
+</mirrors>
+```
+
 （父）pom.xml
 ```xml
  <repositories>
