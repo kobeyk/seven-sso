@@ -81,12 +81,12 @@
 
 ```xml
 <mirrors>
-		<mirror>
-			<id>github</id>
-			<mirrorOf>maven-repository-main</mirrorOf>
-			<name>kobeyk maven</name>
-			<url>https://raw.github.com/kobeyk/maven-repository/main/</url>
-		</mirror>
+    <mirror>
+        <id>github</id>
+        <mirrorOf>maven-repository-main</mirrorOf>
+        <name>kobeyk maven</name>
+        <url>https://raw.github.com/kobeyk/maven-repository/main/</url>
+    </mirror>
 </mirrors>
 ```
 
