@@ -14,6 +14,7 @@
         <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
     </properties>
     <build>
+        <finalName>${project.name}</finalName>
         <plugins>
             <plugin>
                 <groupId>com.github.eirslett</groupId>

@@ -48,7 +48,9 @@
             </plugin>
             <plugin>
                 <!--Maven资源清理插件-->
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
                 <configuration>
                     <!--清理项目构建时产生的资源文件-->
                     <filesets>
@@ -61,7 +63,9 @@
             </plugin>
             <plugin>
                 <!--Maven资源构建插件-->
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>copy React.js frontend content</id>
