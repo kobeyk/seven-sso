@@ -75,8 +75,29 @@
 4.  浏览器访问地址：http://localhost:8866 
 5.  按照用户注册，用户登录进行流程测试即可！
 6.  具体可以参考我的博文：https://blog.csdn.net/Appleyk/article/details/125838806
+7.  项目中引用jar
 
-
+（父）pom.xml
+```xml
+ <repositories>
+        <repository>
+            <id>maven-repository-main</id>
+            <url>https://raw.github.com/kobeyk/maven-repository/main/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+```
+模块引入,比如引入seven-auth-core
+```xml
+ <dependency>
+    <groupId>com.appleyk</groupId>
+    <artifactId>seven-auth-core</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
 
 #### 参与贡献
 

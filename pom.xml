@@ -64,6 +64,7 @@
         <expiringmap.version>0.5.9</expiringmap.version>
         <!-- OpenFeign 全称 Spring Cloud OpenFeign，它是 Spring 官方推出的一种声明式服务调用与负载均衡组件，它的出现就是为了替代进入停更维护状态的 Feign -->
         <springcloud.openfeign.version>2.2.2.RELEASE</springcloud.openfeign.version>
+        <github.global.server>github</github.global.server>
     </properties>
 
     <!--统一POM依赖管理-->
@@ -130,4 +131,63 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <plugins>
+            <plugin>
+                <!-- 指定maven编译的jdk版本,如果不指定,maven3默认用jdk 1.5 maven2默认用jdk1.3 -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <!--源代码使用的jdk版本-->
+                    <source>${java.version}</source>
+                    <!--需要生成的目标class文件的编译版本 -->
+                    <target>${java.version}</target>
+                    <!-- 字符集编码 -->
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!--将jar deploy(发布)到本地储存库位置(altDeploymentRepository)-->
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.1</version>
+                <configuration>
+                    <!--指定本地文件夹（每个模块的target构建路径）作为maven仓库，用于存储本地jar文件-->
+                    <altDeploymentRepository>
+                        internal.repo::default::file://${project.build.directory}/maven-repository
+                    </altDeploymentRepository>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!--将本地存储库位置的jar文件发布到我们自己的github maven仓库上-->
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <message>Maven artifacts for ${project.version}</message>
+                    <noJekyll>true</noJekyll>
+                    <!--本地jar相关文件地址，与上方配置储存库位置(altDeploymentRepository)保持一致-->
+                    <outputDirectory>${project.build.directory}/maven-repository</outputDirectory>
+                    <!--配置上传到github哪个分支，此处配置格式必须以refs/heads/+分支名称，包好的话main就够了-->
+                    <branch>refs/heads/main</branch>
+                    <merge>true</merge>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <!--对应github上创建的仓库名称 name-->
+                    <repositoryName>maven-repository</repositoryName>
+                    <!--github 仓库所有者的用户名-->
+                    <repositoryOwner>kobeyk</repositoryOwner>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
